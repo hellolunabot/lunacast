@@ -71,16 +71,52 @@ def get_mp3_duration(file_path):
     try:
         size = os.path.getsize(file_path)
         with open(file_path, 'rb') as f:
+            # Skip ID3v2 tag if present
+            header = f.read(10)
+            if header[:3] == b'ID3':
+                # ID3v2 size is 4 bytes, synchsafe
+                tag_size = (header[6] << 21) | (header[7] << 14) | (header[8] << 7) | header[9]
+                f.seek(tag_size + 10)
+                size -= (tag_size + 10)
+            else:
+                f.seek(0)
+            
             # Look for the first frame sync (0xFFE or 0xFFF)
-            data = f.read(8192) # Read more to skip potential large ID3 tags
+            data = f.read(8192)
             for i in range(len(data) - 4):
                 if data[i] == 0xFF and (data[i+1] & 0xE0) == 0xE0:
                     header = data[i:i+4]
+                    version = (header[1] >> 3) & 0x03 # 0: 2.5, 1: reserved, 2: v2, 3: v1
+                    layer = (header[1] >> 1) & 0x03   # 1: L3, 2: L2, 3: L1
                     br_index = (header[2] >> 4) & 0x0F
-                    bitrates = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 0]
-                    bitrate = bitrates[br_index]
-                    if bitrate > 0:
-                        return int(size * 8 / (bitrate * 1000))
+                    
+                    # Bitrate table [version][layer][index]
+                    # version: 3=v1, 2=v2/v2.5
+                    # layer: 3=L1, 2=L2, 1=L3
+                    bitrate_map = {
+                        3: { # V1
+                            3: [0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 0], # L1
+                            2: [0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384, 0],   # L2
+                            1: [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 0]    # L3
+                        },
+                        2: { # V2/V2.5
+                            3: [0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256, 0],   # L1
+                            2: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0],      # L2
+                            1: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0]       # L3
+                        },
+                        0: { # V2.5 (Same as V2)
+                            3: [0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256, 0],
+                            2: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0],
+                            1: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0]
+                        }
+                    }
+                    
+                    try:
+                        bitrate = bitrate_map[version][layer][br_index]
+                        if bitrate > 0:
+                            return int(size * 8 / (bitrate * 1000))
+                    except (KeyError, IndexError):
+                        pass
         return int(size * 8 / (128 * 1000))
     except Exception:
         return 0
@@ -210,6 +246,7 @@ def generate():
                     {ep['pub_date_human']} | {ep['duration_str']}
                     {f" | Season {ep['season']}" if ep['season'] else ""}
                     {f" | Episode {ep['episode_num']}" if ep['episode_num'] else ""}
+                    | Voices: {ep['author']}
                 </div>
                 <h2>{ep['title']}</h2>
                 <div class="description">{ep['description']}</div>
