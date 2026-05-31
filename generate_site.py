@@ -12,6 +12,7 @@ PODCAST_AUTHOR = "LunaBot"
 PODCAST_LINK = "https://hellolunabot.github.io/lunacast/"
 LOGO_PATH = "images/lunacast-logo.png"
 THUMBNAIL_PATH = "images/lunacast-thumbnail.jpg"
+APPLE_PODCASTS_ICON = "images/apple-podcasts.png"
 AUDIO_DIR = "audio"
 
 # --- Metadata Helpers ---
@@ -190,7 +191,8 @@ def generate():
         .description {{ margin-top: 1rem; color: #cbd5e1; font-size: 1rem; }}
         audio {{ width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }}
         footer {{ text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }}
-        .rss-link {{ display: inline-block; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 9999px; transition: all 0.2s; }}
+        .rss-link {{ display: inline-flex; align-items: center; gap: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 1rem; transition: all 0.2s; }}
+        .rss-link img {{ height: 24px; width: auto; border-radius: 1rem; }}
         .rss-link:hover {{ background: #38bdf8; color: #0f172a; }}
     </style>
 </head>
@@ -220,7 +222,7 @@ def generate():
         </main>
 
         <footer>
-            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link">Add to Apple Podcasts</a>
+            <a href="pcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link"><img src="{APPLE_PODCASTS_ICON}" alt="Apple Podcasts Icon">Add to Apple Podcasts</a>
         </footer>
     </div>
 </body>
