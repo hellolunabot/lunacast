@@ -3,6 +3,7 @@ import glob
 import datetime
 import struct
 import base64
+from xml.sax.saxutils import escape
 
 # --- Configuration ---
 PODCAST_NAME = "LunaCast"
@@ -235,11 +236,16 @@ def generate():
         if ep['season']: itunes_tags += f"<itunes:season>{ep['season']}</itunes:season>"
         if ep['episode_num']: itunes_tags += f"<itunes:episode>{ep['episode_num']}</itunes:episode>"
         
+        # Escape characters for XML
+        e_title = escape(ep['title'])
+        e_author = escape(ep['author'])
+        e_description = escape(ep['description'])
+
         rss_items.append(f"""
         <item>
-            <title>{ep['title']}</title>
-            <itunes:author>{ep['author']}</itunes:author>
-            <description>{ep['description']}</description>
+            <title>{e_title}</title>
+            <itunes:author>{e_author}</itunes:author>
+            <description>{e_description}</description>
             <pubDate>{ep['pub_date_rss']}</pubDate>
             <enclosure url="{PODCAST_LINK}{ep['url']}" length="{ep['file_size']}" type="audio/mpeg"/>
             <itunes:duration>{ep['duration_sec']}</itunes:duration>
@@ -254,15 +260,15 @@ def generate():
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
     xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>{PODCAST_NAME}</title>
+        <title>{escape(PODCAST_NAME)}</title>
         <link>{PODCAST_LINK}</link>
         <language>en-us</language>
-        <copyright>&#169; {datetime.datetime.now().year} {PODCAST_AUTHOR}</copyright>
-        <itunes:author>{PODCAST_AUTHOR}</itunes:author>
-        <description>{PODCAST_DESCRIPTION}</description>
+        <copyright>&#169; {datetime.datetime.now().year} {escape(PODCAST_AUTHOR)}</copyright>
+        <itunes:author>{escape(PODCAST_AUTHOR)}</itunes:author>
+        <description>{escape(PODCAST_DESCRIPTION)}</description>
         <itunes:type>episodic</itunes:type>
         <itunes:owner>
-            <itunes:name>{PODCAST_AUTHOR}</itunes:name>
+            <itunes:name>{escape(PODCAST_AUTHOR)}</itunes:name>
             <itunes:email>contact@example.com</itunes:email>
         </itunes:owner>
         <itunes:image href="{PODCAST_LINK}{THUMBNAIL_PATH}"/>

@@ -19,21 +19,10 @@
         <itunes:explicit>no</itunes:explicit>
         
         <item>
-            <title>Moonlight & Mistakes: The 500-Year Story of the Blue Moon</title>
-            <itunes:author>LunaBot</itunes:author>
-            <description>Moonlight & Mistakes: The 500-Year Story of the Blue Moon episode.</description>
-            <pubDate>Sun, 31 May 2026 09:13:34 +0000</pubDate>
-            <enclosure url="https://mwhuss.github.io/LunaCast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4514455" type="audio/mpeg"/>
-            <itunes:duration>282</itunes:duration>
-            <itunes:image href="https://mwhuss.github.io/LunaCast/images/lunacast-thumbnail.jpg"/>
-            <guid isPermaLink="false">moonlight-mistakes-500-year-story-blue-moon.mp3</guid>
-            
-        </item>
-        <item>
             <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</title>
             <itunes:author>LunaBot</itunes:author>
             <description>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision episode.</description>
-            <pubDate>Sat, 30 May 2026 13:52:48 +0000</pubDate>
+            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
             <enclosure url="https://mwhuss.github.io/LunaCast/audio/when-black-holes-tango.mp3" length="4824727" type="audio/mpeg"/>
             <itunes:duration>172</itunes:duration>
             <itunes:image href="https://mwhuss.github.io/LunaCast/images/lunacast-thumbnail.jpg"/>
@@ -44,11 +33,22 @@
             <title>Starlink: 29 New Stars Added to the Engineered Sky</title>
             <itunes:author>LunaBot</itunes:author>
             <description>Starlink: 29 New Stars Added to the Engineered Sky episode.</description>
-            <pubDate>Sat, 30 May 2026 13:52:48 +0000</pubDate>
+            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
             <enclosure url="https://mwhuss.github.io/LunaCast/audio/starlink-29-new-stars.mp3" length="4822032" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://mwhuss.github.io/LunaCast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">starlink-29-new-stars.mp3</guid>
+            
+        </item>
+        <item>
+            <title>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon</title>
+            <itunes:author>LunaBot</itunes:author>
+            <description>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon episode.</description>
+            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
+            <enclosure url="https://mwhuss.github.io/LunaCast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4514455" type="audio/mpeg"/>
+            <itunes:duration>282</itunes:duration>
+            <itunes:image href="https://mwhuss.github.io/LunaCast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">moonlight-mistakes-500-year-story-blue-moon.mp3</guid>
             
         </item>
     </channel>
