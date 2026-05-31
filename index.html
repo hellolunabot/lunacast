@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunaCast</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f1f5f9; line-height: 1.6; margin: 0; padding: 0; }
+        header { 
+            position: relative;
+            width: 100%; 
+            height: 300px;
+            background: #0f172a; 
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #334155;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+        }
+        .header-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("images/lunacast-logo.png");
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.4);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+        header img.logo { 
+            position: relative;
+            max-height: 80%;
+            max-width: 90%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            z-index: 2;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem 2rem; }
+        .episode { background: #1e293b; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #334155; transition: transform 0.2s; }
+        .episode:hover { transform: translateY(-4px); border-color: #38bdf8; }
+        .episode h2 { margin-top: 0; color: #f8fafc; font-size: 1.5rem; }
+        .meta { font-size: 0.875rem; color: #38bdf8; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .description { margin-top: 1rem; color: #cbd5e1; font-size: 1rem; }
+        audio { width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }
+        footer { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }
+        .rss-link { display: inline-block; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 9999px; transition: all 0.2s; }
+        .rss-link:hover { background: #38bdf8; color: #0f172a; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <img src="images/lunacast-logo.png" alt="LunaCast Logo" class="logo">
+    </header>
+    
+    <div class="container">
+        <main>
+            
+            <div class="episode">
+                <div class="meta">
+                    May 31, 2026 | 04:42
+                    
+                    
+                </div>
+                <h2>Moonlight & Mistakes: The 500-Year Story of the Blue Moon</h2>
+                <div class="description">Moonlight & Mistakes: The 500-Year Story of the Blue Moon episode.</div>
+                <audio controls>
+                    <source src="audio/moonlight-mistakes-500-year-story-blue-moon.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            <div class="episode">
+                <div class="meta">
+                    May 30, 2026 | 02:52
+                    
+                    
+                </div>
+                <h2>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</h2>
+                <div class="description">When Black Holes Tango: A 60-Billion-Sun Cosmic Collision episode.</div>
+                <audio controls>
+                    <source src="audio/when-black-holes-tango.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            <div class="episode">
+                <div class="meta">
+                    May 30, 2026 | 05:01
+                    
+                    
+                </div>
+                <h2>Starlink: 29 New Stars Added to the Engineered Sky</h2>
+                <div class="description">Starlink: 29 New Stars Added to the Engineered Sky episode.</div>
+                <audio controls>
+                    <source src="audio/starlink-29-new-stars.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+        </main>
+
+        <footer>
+            <a href="rss.xml" class="rss-link">Subscribe via RSS</a>
+        </footer>
+    </div>
+</body>
+</html>
