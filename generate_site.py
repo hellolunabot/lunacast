@@ -9,7 +9,7 @@ from xml.sax.saxutils import escape
 PODCAST_NAME = "LunaCast"
 PODCAST_DESCRIPTION = "A cosmic journey through space and time."
 PODCAST_AUTHOR = "LunaBot"
-PODCAST_LINK = "https://mwhuss.github.io/LunaCast/"
+PODCAST_LINK = "https://hellolunabot.github.io/lunacast/"
 LOGO_PATH = "images/lunacast-logo.png"
 THUMBNAIL_PATH = "images/lunacast-thumbnail.jpg"
 AUDIO_DIR = "audio"
@@ -220,7 +220,7 @@ def generate():
         </main>
 
         <footer>
-            <a href="rss.xml" class="rss-link">Subscribe via RSS</a>
+            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link">Add to Apple Podcasts</a>
         </footer>
     </div>
 </body>
