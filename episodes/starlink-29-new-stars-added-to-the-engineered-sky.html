@@ -96,12 +96,14 @@
         .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
         
-        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }
+        .transcript-line.active { background: #334155; border-color: #38bdf8; transform: translateX(4px); }
         .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
     
     </style>
 </head>
@@ -117,7 +119,7 @@
             
             <div class="episode">
                 <div class="meta">
-                    June 01, 2026 | 05:01
+                    May 31, 2026 | 05:01
                     
                     
                     | Voices: LunaBot
@@ -132,10 +134,7 @@
         
             <div class="transcript">
                 <h3>Transcript</h3>
-                
-            <div class="transcript-line">
-                <div class="dialogue">Okay, question. If I told you that somewhere right now, 29 new satellites just went into orbit around the Earth, not a big ceremony, no countdown on the news, no balloons, just a rocket going whoosh in space getting a little busier, would you notice? I'd look up. Not because it's unusual, but because it used to be. I remember when a rocket launch was an event. Now it's Tuesday. Tuesday. That's exactly what happened on May 29, 2026. Cape Canaveral. Falcon 9. 29 Starlink V2 mini satellites heading to low Earth orbit. And if that doesn't sound like a lot, consider this. By mid-2026, SpaceX had thousands of satellites up there. This was just mission 10-53. Number 53. The sky has always been ours to fill, but this is the first time we've filled it with purpose. Okay. Alistair, before you get all ancient profit on us, break it down. What's Starlink really? It's simpler than it sounds. And more complicated. Basically, Elon Musk looked at the internet and said, I want it everywhere. Ground stations can't reach everywhere, but satellites can. So he built a network in space. 29 more pieces of it went up on that launch. So. Starlink V2 mini satellites. The newer generation. Better throughput. Satellite-to-satellite laser links, which means less reliance on ground stations. They're basically Wi-Fi extenders, but like for the whole planet. An internet woven across the heavens. A tapestry of light. We used to map the stars by their patterns. Now we map them by their purpose. I love that. A tapestry of light. You should write pop lyrics. Alistair's a wizard, Lola. He writes spells, not songs. But seriously, here's where it gets interesting. The Falcon 9 that just launched those 29 satellites? It's probably not a brand new rocket. It's probably flown before. Maybe 15 times. Maybe more. Ah, yes. The reused bird. The phoenix of engineers. We used to send things to space and leave them there. One-way tickets for machines that cost millions. Now we're treating a rocket like a bus. That's the economic revolution, right? Reusing the booster cuts the cost per launch to a fraction of what a new rocket would cost. And that changes everything. It's not just can we put stuff in space anymore. It's can we do it every single week, reliably, affordably? And the answer is yes. That's the part nobody talks about. The every week part. It's not one heroic launch per year. It's a rhythm. A heartbeat. One of those launches happens and the news doesn't cover it because it's not unusual anymore. The extraordinary has become infrastructure. Let me give you some numbers. Starlink has thousands of satellites in orbit now. Thousands. They're providing broadband to rural communities. Ships at sea, airplanes mid-flight. Places where nobody thought they'd ever get real internet. And this launch on May 29th? It wasn't the last one. It was just the latest installment in a show that never stops. We spent the first half of our space age trying to reach out, touch Mars, walk on the moon, prove we could. Now we're filling our own sky. It's a different kind of reaching. Quieter. More patient. Like planting a forest and never sitting under its shade. I think that's the heart of it. This isn't about flexing rocket muscles anymore. It's about connection. Literally. Making sure a kid in a rural town or a fisherman off the coast or someone stranded somewhere with no cell service, they can still reach out. Still reach through. You know what hits me? When those 29 satellites went up, they joined a constellation that's already so big. People who've never looked up in their lives are passing through it every day, without knowing it. It's the biggest engineering project most people don't know exists. And yet, the most necessary. Alistair's been waiting to drop that one. I mean, he's right though. Think about it. Every time someone streams a show from a barn in Nebraska, or orders food from a boat in the middle of nowhere, or video calls their grandmother from a village that had no phone line until last year, Starlink is doing that work. In silence. In orbit. Unseen. So, Starlink Group 10-53. 29 new satellites. 1 Falcon 9. Cape Canaveral. May 29, 2026. It wasn't the most dramatic launch in the world. But it was another stitch in a tapestry that's connecting the planet in ways we didn't think possible even five years ago. The sky above us is no longer empty. It's alive. And it's getting busier every week. Look up sometime. Just once. They're still there. All of them. Glinting in the afterglow, a new kind of constellation. The engineers of the sky. We no longer wonder what the stars are for. We built our own. That's the show. If you enjoyed this, share it with someone who still looks up at the sky and wonders. We'll be back with another story next time. Until then, keep listening.</div>
-            </div>
+                <div class="transcript-line"><div class="dialogue">Okay, question. If I told you that somewhere right now, 29 new satellites just went into orbit around the Earth, not a big ceremony, no countdown on the news, no balloons, just a rocket going whoosh in space getting a little busier, would you notice? I'd look up. Not because it's unusual, but because it used to be. I remember when a rocket launch was an event. Now it's Tuesday. Tuesday. That's exactly what happened on May 29, 2026. Cape Canaveral. Falcon 9. 29 Starlink V2 mini satellites heading to low Earth orbit. And if that doesn't sound like a lot, consider this. By mid-2026, SpaceX had thousands of satellites up there. This was just mission 10-53. Number 53. The sky has always been ours to fill, but this is the first time we've filled it with purpose. Okay. Alistair, before you get all ancient profit on us, break it down. What's Starlink really? It's simpler than it sounds. And more complicated. Basically, Elon Musk looked at the internet and said, I want it everywhere. Ground stations can't reach everywhere, but satellites can. So he built a network in space. 29 more pieces of it went up on that launch. So. Starlink V2 mini satellites. The newer generation. Better throughput. Satellite-to-satellite laser links, which means less reliance on ground stations. They're basically Wi-Fi extenders, but like for the whole planet. An internet woven across the heavens. A tapestry of light. We used to map the stars by their patterns. Now we map them by their purpose. I love that. A tapestry of light. You should write pop lyrics. Alistair's a wizard, Lola. He writes spells, not songs. But seriously, here's where it gets interesting. The Falcon 9 that just launched those 29 satellites? It's probably not a brand new rocket. It's probably flown before. Maybe 15 times. Maybe more. Ah, yes. The reused bird. The phoenix of engineers. We used to send things to space and leave them there. One-way tickets for machines that cost millions. Now we're treating a rocket like a bus. That's the economic revolution, right? Reusing the booster cuts the cost per launch to a fraction of what a new rocket would cost. And that changes everything. It's not just can we put stuff in space anymore. It's can we do it every single week, reliably, affordably? And the answer is yes. That's the part nobody talks about. The every week part. It's not one heroic launch per year. It's a rhythm. A heartbeat. One of those launches happens and the news doesn't cover it because it's not unusual anymore. The extraordinary has become infrastructure. Let me give you some numbers. Starlink has thousands of satellites in orbit now. Thousands. They're providing broadband to rural communities. Ships at sea, airplanes mid-flight. Places where nobody thought they'd ever get real internet. And this launch on May 29th? It wasn't the last one. It was just the latest installment in a show that never stops. We spent the first half of our space age trying to reach out, touch Mars, walk on the moon, prove we could. Now we're filling our own sky. It's a different kind of reaching. Quieter. More patient. Like planting a forest and never sitting under its shade. I think that's the heart of it. This isn't about flexing rocket muscles anymore. It's about connection. Literally. Making sure a kid in a rural town or a fisherman off the coast or someone stranded somewhere with no cell service, they can still reach out. Still reach through. You know what hits me? When those 29 satellites went up, they joined a constellation that's already so big. People who've never looked up in their lives are passing through it every day, without knowing it. It's the biggest engineering project most people don't know exists. And yet, the most necessary. Alistair's been waiting to drop that one. I mean, he's right though. Think about it. Every time someone streams a show from a barn in Nebraska, or orders food from a boat in the middle of nowhere, or video calls their grandmother from a village that had no phone line until last year, Starlink is doing that work. In silence. In orbit. Unseen. So, Starlink Group 10-53. 29 new satellites. 1 Falcon 9. Cape Canaveral. May 29, 2026. It wasn't the most dramatic launch in the world. But it was another stitch in a tapestry that's connecting the planet in ways we didn't think possible even five years ago. The sky above us is no longer empty. It's alive. And it's getting busier every week. Look up sometime. Just once. They're still there. All of them. Glinting in the afterglow, a new kind of constellation. The engineers of the sky. We no longer wonder what the stars are for. We built our own. That's the show. If you enjoyed this, share it with someone who still looks up at the sky and wonders. We'll be back with another story next time. Until then, keep listening.</div></div>
             </div>
         </main>
         
@@ -144,5 +143,54 @@
         </footer>
     
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {
+                        newActiveLine = line;
+                        break;
+                    }
+                }
+
+                if (newActiveLine && newActiveLine !== activeLine) {
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!newActiveLine && activeLine) {
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }
+            });
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {
+                        audio.currentTime = start;
+                        audio.play();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -96,12 +96,14 @@
         .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
         
-        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }
+        .transcript-line.active { background: #334155; border-color: #38bdf8; transform: translateX(4px); }
         .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
     
     </style>
 </head>
@@ -163,22 +165,7 @@
         
             <div class="episode">
                 <div class="meta">
-                    June 01, 2026 | 05:45
-                    
-                    
-                    | Voices: lola_midnight, alistair_thorne
-                </div>
-                <h2><a href="episodes/more-than-magic-when-ai-met-the-real-world.html">More Than Magic: When AI Met the Real World</a></h2>
-                <div class="description">A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</div>
-                <audio controls>
-                    <source src="audio/more-than-magic-when-ai-met-the-real-world.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        
-            <div class="episode">
-                <div class="meta">
-                    June 01, 2026 | 04:41
+                    May 31, 2026 | 04:41
                     
                     
                     | Voices: lola_midnight, alistair_thorne
@@ -187,6 +174,21 @@
                 <div class="description">Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</div>
                 <audio controls>
                     <source src="audio/the-big-hums-when-the-future-runs-out-of-breath.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        
+            <div class="episode">
+                <div class="meta">
+                    May 31, 2026 | 05:45
+                    
+                    
+                    | Voices: lola_midnight, alistair_thorne
+                </div>
+                <h2><a href="episodes/more-than-magic-when-ai-met-the-real-world.html">More Than Magic: When AI Met the Real World</a></h2>
+                <div class="description">A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</div>
+                <audio controls>
+                    <source src="audio/more-than-magic-when-ai-met-the-real-world.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>

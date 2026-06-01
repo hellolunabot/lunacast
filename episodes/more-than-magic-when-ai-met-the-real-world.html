@@ -96,12 +96,14 @@
         .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
         
-        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }
+        .transcript-line.active { background: #334155; border-color: #38bdf8; transform: translateX(4px); }
         .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
     
     </style>
 </head>
@@ -117,7 +119,7 @@
             
             <div class="episode">
                 <div class="meta">
-                    June 01, 2026 | 05:45
+                    May 31, 2026 | 05:45
                     
                     
                     | Voices: lola_midnight, alistair_thorne
@@ -141,5 +143,54 @@
         </footer>
     
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {
+                        newActiveLine = line;
+                        break;
+                    }
+                }
+
+                if (newActiveLine && newActiveLine !== activeLine) {
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!newActiveLine && activeLine) {
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }
+            });
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {
+                        audio.currentTime = start;
+                        audio.play();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -219,22 +219,63 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')
 
-def parse_srt(srt_text):
-    """Strip SRT indices and timestamps to get clean dialogue text."""
-    lines = srt_text.splitlines()
-    text_lines = []
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-        # Skip numeric index lines
-        if line.isdigit():
-            continue
-        # Skip timestamp lines (00:00:00,000 --> 00:00:03,000)
-        if '-->' in line:
-            continue
-        text_lines.append(line)
-    return '\n'.join(text_lines)
+def timestamp_to_seconds(ts):
+    """Convert HH:MM:SS.mmm or HH:MM:SS,mmm to float seconds."""
+    ts = ts.replace(',', '.')
+    parts = ts.split(':')
+    if len(parts) == 3:
+        h = float(parts[0])
+        m = float(parts[1])
+        s = float(parts[2])
+    elif len(parts) == 2:
+        h = 0
+        m = float(parts[0])
+        s = float(parts[1])
+    else:
+        return 0.0
+    return h * 3600 + m * 60 + s
+
+def parse_transcript(text):
+    """Parse VTT or SRT into a list of {start, end, text} dictionaries."""
+    blocks = []
+    # Split by double newline to get individual blocks
+    raw_blocks = re.split(r'\n\s*\n', text.strip())
+    
+    for block in raw_blocks:
+        lines = block.strip().splitlines()
+        if not lines: continue
+        
+        # Skip "WEBVTT" header
+        if lines[0].strip() == "WEBVTT":
+            lines = lines[1:]
+            if not lines: continue
+            
+        # Check if first line is an index (SRT style)
+        if lines[0].strip().isdigit():
+            lines = lines[1:]
+            if not lines: continue
+            
+        # Find timestamp line
+        ts_line = None
+        ts_idx = -1
+        for idx, line in enumerate(lines):
+            if '-->' in line:
+                ts_line = line
+                ts_idx = idx
+                break
+        
+        if ts_line:
+            ts_parts = ts_line.split('-->')
+            try:
+                start = timestamp_to_seconds(ts_parts[0].strip())
+                end = timestamp_to_seconds(ts_parts[1].strip())
+                content = " ".join(lines[ts_idx+1:]).strip()
+                if content:
+                    blocks.append({'start': start, 'end': end, 'text': content})
+            except (ValueError, IndexError):
+                continue
+    
+    return blocks
 
 def srt_to_vtt(srt_path):
     """Convert SRT file to WebVTT format for Apple Podcasts compatibility."""
@@ -280,29 +321,39 @@ def format_speaker_name(name, author_list):
     
     return name.strip('[]').strip().upper()
 
-def format_transcript_html(transcript, author_list=""):
-    if not transcript:
+def format_transcript_html(transcript_blocks, author_list=""):
+    if not transcript_blocks:
         return "<p>No transcript available for this episode.</p>"
     
+    # Handle plain text fallback (e.g. from USLT tag)
+    if isinstance(transcript_blocks, str):
+        html = []
+        lines = transcript_blocks.split('\n')
+        for line in lines:
+            line = line.strip()
+            if not line: continue
+            html.append(f'<div class="transcript-line"><div class="dialogue">{escape(line)}</div></div>')
+        return '\n'.join(html)
+    
     html = []
-    lines = transcript.split('\n')
     pending_speaker = None
     
-    for line in lines:
-        line = line.strip()
-        if not line or line == "WEBVTT": continue
+    for block in transcript_blocks:
+        text = block['text']
+        start = block['start']
+        end = block['end']
         
         speaker = None
-        dialogue = line
+        dialogue = text
         
         # 1. Check for bracketed speaker identifiers like "[Speaker Name]"
-        bracket_match = re.match(r'^\[([^\]]+)\]\s*(.*)', line)
+        bracket_match = re.match(r'^\[([^\]]+)\]\s*(.*)', text)
         if bracket_match:
             speaker = bracket_match.group(1)
             dialogue = bracket_match.group(2)
         # 2. Check for colon speaker identifiers like "Speaker Name:"
-        elif ':' in line and len(line.split(':', 1)[0]) < 30:
-            parts = line.split(':', 1)
+        elif ':' in text and len(text.split(':', 1)[0]) < 30:
+            parts = text.split(':', 1)
             speaker = parts[0].strip()
             dialogue = parts[1].strip()
         
@@ -310,26 +361,20 @@ def format_transcript_html(transcript, author_list=""):
         if speaker:
             speaker = format_speaker_name(speaker, author_list)
             
-            # If there's no dialogue on this line, buffer the speaker for the next line
+            # If there's no dialogue on this line, buffer the speaker for the next block
             if not dialogue:
                 pending_speaker = speaker
                 continue
         
-        # Use the buffered speaker if we have one and this line didn't have its own
+        # Use the buffered speaker if we have one and this block didn't have its own
         current_speaker = speaker or pending_speaker
         pending_speaker = None # Reset buffer
         
+        line_html = f'<div class="transcript-line" data-start="{start}" data-end="{end}">'
         if current_speaker:
-            html.append(f'''
-            <div class="transcript-line">
-                <div class="speaker">{escape(current_speaker)}</div>
-                <div class="dialogue">{escape(dialogue)}</div>
-            </div>''')
-        else:
-            html.append(f'''
-            <div class="transcript-line">
-                <div class="dialogue">{escape(dialogue)}</div>
-            </div>''')
+            line_html += f'\n                <div class="speaker">{escape(current_speaker)}</div>'
+        line_html += f'\n                <div class="dialogue">{escape(dialogue)}</div>\n            </div>'
+        html.append(line_html)
             
     return '\n'.join(html)
 
@@ -367,8 +412,7 @@ def generate():
             transcript_type = "text/vtt"
             try:
                 with open(vtt_file_path, 'r', encoding='utf-8') as vf:
-                    # For website, we can use the same parse_srt as it handles the format similarly
-                    transcript = parse_srt(vf.read())
+                    transcript = parse_transcript(vf.read())
             except Exception:
                 pass
         elif os.path.exists(srt_file_path):
@@ -376,7 +420,7 @@ def generate():
             transcript_type = "application/x-subrip"
             try:
                 with open(srt_file_path, 'r', encoding='utf-8') as sf:
-                    transcript = parse_srt(sf.read())
+                    transcript = parse_transcript(sf.read())
             except Exception:
                 pass
 
@@ -494,12 +538,14 @@ def generate():
         .transcript {{ background: transparent; padding: 0; margin-top: 2rem; border: none; }}
         .transcript h3 {{ margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }}
         
-        .transcript-line {{ background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }}
+        .transcript-line {{ background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }}
+        .transcript-line.active {{ background: #334155; border-color: #38bdf8; transform: translateX(4px); }}
         .speaker {{ color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }}
         .dialogue {{ color: #cbd5e1; line-height: 1.6; }}
         
         .back-link {{ display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }}
         .back-link:hover {{ text-decoration: underline; }}
+        html {{ scroll-behavior: smooth; }}
     """
 
     header_html = f"""
@@ -576,6 +622,55 @@ def generate():
         </main>
         {footer_html.replace(APPLE_PODCASTS_ICON, '../' + APPLE_PODCASTS_ICON)}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {{
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            audio.addEventListener('timeupdate', () => {{
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {{
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {{
+                        newActiveLine = line;
+                        break;
+                    }}
+                }}
+
+                if (newActiveLine && newActiveLine !== activeLine) {{
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+                }} else if (!newActiveLine && activeLine) {{
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }}
+            }});
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {{
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {{
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {{
+                        audio.currentTime = start;
+                        audio.play();
+                    }}
+                }});
+            }});
+        }});
+    </script>
 </body>
 </html>
 """

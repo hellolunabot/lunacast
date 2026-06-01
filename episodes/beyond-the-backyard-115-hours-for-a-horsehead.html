@@ -96,12 +96,14 @@
         .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
         
-        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }
+        .transcript-line.active { background: #334155; border-color: #38bdf8; transform: translateX(4px); }
         .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
     
     </style>
 </head>
@@ -132,98 +134,79 @@
         
             <div class="transcript">
                 <h3>Transcript</h3>
-                
-            <div class="transcript-line">
+                <div class="transcript-line" data-start="0.0" data-end="12.179">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">Okay, picture this. Phoenix, Arizona. Half a million people. Streetlights everywhere. You're trying to photograph something 1,400 light-years away. In a city that basically never goes dark.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="12.179" data-end="14.359">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">That should be impossible, right?</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="14.359" data-end="39.74">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">Well, Greg Meyer thought otherwise. In eleven — make that one — one hundred fifteen hours of telescope time, this Phoenix astro-photographer captured the Horsehead Nebula with a backyard setup that costs a tiny fraction of what the James Webb Space Telescope does. And the result? Image that makes professional astronomers stop and stare. I'm Trixie Quick. On this show, we chase the impossible. Today: patience as a superpower, light pollution as an opponent, and the art of seeing something nobody else can.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="39.74" data-end="43.68">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">I've got two voices with me. Lola Midnight — welcome.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="43.68" data-end="54.74">
                 <div class="speaker">LOLA MIDNIGHT</div>
                 <div class="dialogue">Thanks for having me. Look, I've been around enough instruments to know when something special is happening. And eleven hundred-fifteen hours? That's not a photograph. That's a love letter written in photons.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="54.74" data-end="68.12">
                 <div class="speaker">ISADORA VANE</div>
                 <div class="dialogue">A love letter? I'm calling it a creative heist. Meyer looked at the standard red-and-black astrophotography palette and said, "Nah." He went for complementary colors — something completely different. That takes guts.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="68.12" data-end="84.62">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">Let's talk gears for a second, because this is where the story gets weird. Most people picture NASA-level equipment. Greg's got a Radian Raptor — sixty-one millimeters. Tiny. And a ZWO camera that captures eighty percent of the photons that hit it. Eighty percent. That's better than most eyes.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="84.62" data-end="106.88">
                 <div class="speaker">LOLA MIDNIGHT</div>
                 <div class="dialogue">You know what I love about that? The Horsehead Nebula is named after its shape — a dark cloud of dust silhouetted against glowing gas. It sits in the constellation Orion. It's twelve hundred to sixteen hundred light-years away. The radiation that makes it glow is also creating new stars. We're looking at star birth, Greg's telescope, because — two thousand years ago — captured from a backyard in Phoenix.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="106.88" data-end="132.18">
                 <div class="speaker">ISADORA VANE</div>
                 <div class="dialogue">Let's be clear — the visual form is iconic because it only exists in visible light. The James Webb Space Telescope saw it too. Hubble did. But in Spitzer's infrared view? The horsehead disappears. The shape we know? That's visible-light reality. And Meyer — using nothing more than a modest refractor — proved the gap between amateur and professional observatories has shrunk to almost nothing.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="132.18" data-end="162.76">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">So let me lay out the timeline, because this is where the patience flex kicks in. He didn't take this in one night. This was November twenty twenty five to March twenty twenty six. Five months of waiting for clear skies. Imaging Orion when the winter sky gave him the chance. Night after night, thousands of short exposures. Then — and this is the magic — software aligns them. Stacks only the best frames. Every single photon stored on the same canvas. Signal amplifies massively. Random noise averages out. What emerges is something invisible in a single exposure.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="162.76" data-end="177.18">
                 <div class="speaker">LOLA MIDNIGHT</div>
                 <div class="dialogue">Professional observatories fight for telescope hours. Greg had a backyard and a dream. Unlimited time. That's the real weapon here. One hundred fifteen hours of pure exposure. That's four point eight days. Spread over five months — waiting.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="177.18" data-end="208.32">
                 <div class="speaker">ISADORA VANE</div>
                 <div class="dialogue">But the processing — that's where it became art. Phase one, pure science in PixInsight: Dynamic Background Extraction to kill Phoenix's light pollution gradient. Deconvolution. Sharpening with BlurXTerminator. Spectrophotometric color calibration. Noise reduction. Then — and this is the turn — he moved to Photoshop and Lightroom. And he started going down a rabbit hole. His own words: "I really started going down a rabbit hole. I like this color combo with some complementary colors, something different." He started with a technical goal and ended with something visually unique.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="208.32" data-end="219.22">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">And that's the heart of this story, isn't it? Light pollution. Phoenix — massive city, bright sky. Shooting the Horsehead from there is like trying to photograph a candle flame in the middle of Times Square.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="219.22" data-end="222.44">
                 <div class="speaker">LOLA MIDNIGHT</div>
                 <div class="dialogue">One hundred fifteen hours against Times Square.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="222.44" data-end="224.14">
                 <div class="speaker">ISADORA VANE</div>
                 <div class="dialogue">And it worked.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="224.14" data-end="255.28">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">The Horsehead Nebula — Barnard 33 — isn't just a pretty picture. It's a dark nebula sitting inside the Orion Molecular Cloud Complex. New stars are being born right now in the same gas. Alnitak — the easternmost star in Orion's Belt — illuminates the whole region. The Flame Nebula glows just below it, caught in the same star-making fire. Greg Meyer captured it all from his backyard with equipment that would've seemed preposterous twenty years ago. Amateur astrophotography has come so far. The science is the same. The art is entirely his own.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="255.28" data-end="264.5">
                 <div class="speaker">LOLA MIDNIGHT</div>
                 <div class="dialogue">You don't need a billion-dollar telescope to see the universe. You need patience, skill, and the willingness to wait — a hundred fifteen hours — for the photons to find you.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="264.5" data-end="269.64">
                 <div class="speaker">ISADORA VANE</div>
                 <div class="dialogue">And maybe just a little bit of creative rebellion against the way things are supposed to look.</div>
             </div>
-
-            <div class="transcript-line">
+<div class="transcript-line" data-start="269.64" data-end="275.08">
                 <div class="speaker">TRIXIE QUICK</div>
                 <div class="dialogue">That's our show. For today, we'll leave you looking up. The cosmos is closer than you think.</div>
             </div>
@@ -235,5 +218,54 @@
         </footer>
     
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {
+                        newActiveLine = line;
+                        break;
+                    }
+                }
+
+                if (newActiveLine && newActiveLine !== activeLine) {
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!newActiveLine && activeLine) {
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }
+            });
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {
+                        audio.currentTime = start;
+                        audio.play();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
