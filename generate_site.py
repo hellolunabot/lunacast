@@ -25,41 +25,64 @@ def read_id3_v2(file_path):
             if header[:3] != b'ID3':
                 return tags
             
-            # Size is 4 bytes, synchsafe (ignore the most significant bit of each byte)
-            size = (header[6] << 21) | (header[7] << 14) | (header[8] << 7) | header[9]
-            tag_data = f.read(size)
+            version_major = header[3]
+            # Tag size is 4 bytes, synchsafe
+            tag_size = (header[6] << 21) | (header[7] << 14) | (header[8] << 7) | header[9]
+            tag_data = f.read(tag_size)
             
             i = 0
             while i < len(tag_data) - 10:
                 frame_id = tag_data[i:i+4].decode('ascii', errors='ignore')
                 if not frame_id or frame_id[0] == '\x00': break
                 
-                frame_size = struct.unpack('>I', tag_data[i+4:i+8])[0]
-                # ID3v2.3 size is standard, ID3v2.4 is synchsafe. Assuming v2.3 for simplicity.
+                # Frame size: v2.3 is standard 4-byte int, v2.4 is synchsafe
+                if version_major == 3:
+                    frame_size = struct.unpack('>I', tag_data[i+4:i+8])[0]
+                elif version_major == 4:
+                    fs = tag_data[i+4:i+8]
+                    frame_size = (fs[0] << 21) | (fs[1] << 14) | (fs[2] << 7) | fs[3]
+                else:
+                    frame_size = struct.unpack('>I', tag_data[i+4:i+8])[0]
                 
                 content = tag_data[i+10:i+10+frame_size]
-                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TPOS', 'TRCK']:
+                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TXXX', 'TPOS', 'TRCK']:
                     # First byte is encoding (0=ISO-8859-1, 1=UTF-16, 2=UTF-16BE, 3=UTF-8)
+                    if not content:
+                        i += 10 + frame_size
+                        continue
                     encoding = content[0]
                     text_data = content[1:]
                     
-                    if encoding == 0: text = text_data.decode('iso-8859-1', errors='ignore')
-                    elif encoding == 1: text = text_data.decode('utf-16', errors='ignore')
-                    elif encoding == 2: text = text_data.decode('utf-16-be', errors='ignore')
-                    elif encoding == 3: text = text_data.decode('utf-8', errors='ignore')
-                    else: text = text_data.decode('ascii', errors='ignore')
-                    
-                    # COMM frames have a language and short description before the actual text
-                    if frame_id == 'COMM':
-                        parts = text.split('\x00', 1)
-                        text = parts[-1] if len(parts) > 1 else text
-                    
-                    # TPOS and TRCK can be "1/10" format, we just want the number
-                    clean_text = text.strip('\x00').strip()
-                    if frame_id in ['TPOS', 'TRCK'] and '/' in clean_text:
-                        clean_text = clean_text.split('/')[0]
-                    
-                    tags[frame_id] = clean_text
+                    try:
+                        if encoding == 0: text = text_data.decode('iso-8859-1', errors='ignore')
+                        elif encoding == 1: text = text_data.decode('utf-16', errors='ignore')
+                        elif encoding == 2: text = text_data.decode('utf-16-be', errors='ignore')
+                        elif encoding == 3: text = text_data.decode('utf-8', errors='ignore')
+                        else: text = text_data.decode('ascii', errors='ignore')
+                        
+                        # COMM frames have a language (3 bytes) and short description before the actual text
+                        if frame_id == 'COMM':
+                            parts = text.split('\x00', 1)
+                            text = parts[-1] if len(parts) > 1 else text[3:]
+                        
+                        # TXXX frames have a description before the actual text
+                        if frame_id == 'TXXX':
+                            parts = text.split('\x00', 1)
+                            if len(parts) > 1 and parts[0].lower() == 'comment':
+                                text = parts[1]
+                            else:
+                                i += 10 + frame_size
+                                continue
+
+                        clean_text = text.strip('\x00').strip()
+                        if frame_id in ['TPOS', 'TRCK'] and '/' in clean_text:
+                            clean_text = clean_text.split('/')[0]
+                        
+                        # Map COMM or TXXX comment to a internal key
+                        key = 'COMM' if frame_id in ['COMM', 'TXXX'] else frame_id
+                        tags[key] = clean_text
+                    except Exception:
+                        pass
                 
                 i += 10 + frame_size
     except Exception:

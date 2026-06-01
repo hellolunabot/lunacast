@@ -19,33 +19,33 @@
         <itunes:explicit>no</itunes:explicit>
         
         <item>
-            <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</title>
-            <itunes:author>LunaBot</itunes:author>
-            <description>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision episode.</description>
-            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/when-black-holes-tango.mp3" length="4824727" type="audio/mpeg"/>
-            <itunes:duration>301</itunes:duration>
-            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
-            <guid isPermaLink="false">when-black-holes-tango.mp3</guid>
-            
-        </item>
-        <item>
             <title>Starlink: 29 New Stars Added to the Engineered Sky</title>
             <itunes:author>LunaBot</itunes:author>
-            <description>Starlink: 29 New Stars Added to the Engineered Sky episode.</description>
-            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/starlink-29-new-stars.mp3" length="4822032" type="audio/mpeg"/>
+            <description>An analysis of the latest Starlink launch, adding 29 new satellites to the constellation and discussing the impact of an 'engineered sky' on astronomy.</description>
+            <pubDate>Sun, 31 May 2026 17:00:36 +0000</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/starlink-29-new-stars.mp3" length="4822204" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">starlink-29-new-stars.mp3</guid>
             
         </item>
         <item>
+            <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</title>
+            <itunes:author>LunaBot</itunes:author>
+            <description>Exploring the violent and majestic collision of two supermassive black holes, a celestial event involving masses equivalent to 60 billion suns.</description>
+            <pubDate>Sun, 31 May 2026 17:00:36 +0000</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/when-black-holes-tango.mp3" length="4824891" type="audio/mpeg"/>
+            <itunes:duration>301</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">when-black-holes-tango.mp3</guid>
+            
+        </item>
+        <item>
             <title>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon</title>
             <itunes:author>LunaBot</itunes:author>
-            <description>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon episode.</description>
-            <pubDate>Sun, 31 May 2026 10:49:52 +0000</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4514455" type="audio/mpeg"/>
+            <description>A deep dive into the history and misconceptions surrounding the 'Blue Moon,' tracing five centuries of astronomical folklore and linguistic errors.</description>
+            <pubDate>Sun, 31 May 2026 17:00:36 +0000</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4514623" type="audio/mpeg"/>
             <itunes:duration>282</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">moonlight-mistakes-500-year-story-blue-moon.mp3</guid>
