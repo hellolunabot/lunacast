@@ -93,10 +93,12 @@
         td a:hover { text-decoration: underline; }
 
         /* Transcript Styles */
-        .transcript { background: #1e293b; border-radius: 1rem; padding: 2rem; margin-top: 2rem; border: 1px solid #334155; }
+        .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .transcript p { margin-bottom: 1rem; color: #cbd5e1; }
-        .transcript strong { color: #f8fafc; }
+        
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
@@ -130,25 +132,101 @@
         
             <div class="transcript">
                 <h3>Transcript</h3>
-                <p>[TRIXIE QUICK] Okay, picture this. Phoenix, Arizona. Half a million people. Streetlights everywhere. You're trying to photograph something 1,400 light-years away. In a city that basically never goes dark.</p>
-<p>[TRIXIE QUICK] That should be impossible, right?</p>
-<p>[TRIXIE QUICK] Well, Greg Meyer thought otherwise. In eleven — make that one — one hundred fifteen hours of telescope time, this Phoenix astro-photographer captured the Horsehead Nebula with a backyard setup that costs a tiny fraction of what the James Webb Space Telescope does. And the result? Image that makes professional astronomers stop and stare. I'm Trixie Quick. On this show, we chase the impossible. Today: patience as a superpower, light pollution as an opponent, and the art of seeing something nobody else can.</p>
-<p>[TRIXIE QUICK] I've got two voices with me. Lola Midnight — welcome.</p>
-<p>[LOLA MIDNIGHT] Thanks for having me. Look, I've been around enough instruments to know when something special is happening. And eleven hundred-fifteen hours? That's not a photograph. That's a love letter written in photons.</p>
-<p>[ISADORA VANE] A love letter? I'm calling it a creative heist. Meyer looked at the standard red-and-black astrophotography palette and said, "Nah." He went for complementary colors — something completely different. That takes guts.</p>
-<p>[TRIXIE QUICK] Let's talk gears for a second, because this is where the story gets weird. Most people picture NASA-level equipment. Greg's got a Radian Raptor — sixty-one millimeters. Tiny. And a ZWO camera that captures eighty percent of the photons that hit it. Eighty percent. That's better than most eyes.</p>
-<p>[LOLA MIDNIGHT] You know what I love about that? The Horsehead Nebula is named after its shape — a dark cloud of dust silhouetted against glowing gas. It sits in the constellation Orion. It's twelve hundred to sixteen hundred light-years away. The radiation that makes it glow is also creating new stars. We're looking at star birth, Greg's telescope, because — two thousand years ago — captured from a backyard in Phoenix.</p>
-<p>[ISADORA VANE] Let's be clear — the visual form is iconic because it only exists in visible light. The James Webb Space Telescope saw it too. Hubble did. But in Spitzer's infrared view? The horsehead disappears. The shape we know? That's visible-light reality. And Meyer — using nothing more than a modest refractor — proved the gap between amateur and professional observatories has shrunk to almost nothing.</p>
-<p>[TRIXIE QUICK] So let me lay out the timeline, because this is where the patience flex kicks in. He didn't take this in one night. This was November twenty twenty five to March twenty twenty six. Five months of waiting for clear skies. Imaging Orion when the winter sky gave him the chance. Night after night, thousands of short exposures. Then — and this is the magic — software aligns them. Stacks only the best frames. Every single photon stored on the same canvas. Signal amplifies massively. Random noise averages out. What emerges is something invisible in a single exposure.</p>
-<p>[LOLA MIDNIGHT] Professional observatories fight for telescope hours. Greg had a backyard and a dream. Unlimited time. That's the real weapon here. One hundred fifteen hours of pure exposure. That's four point eight days. Spread over five months — waiting.</p>
-<p>[ISADORA VANE] But the processing — that's where it became art. Phase one, pure science in PixInsight: Dynamic Background Extraction to kill Phoenix's light pollution gradient. Deconvolution. Sharpening with BlurXTerminator. Spectrophotometric color calibration. Noise reduction. Then — and this is the turn — he moved to Photoshop and Lightroom. And he started going down a rabbit hole. His own words: "I really started going down a rabbit hole. I like this color combo with some complementary colors, something different." He started with a technical goal and ended with something visually unique.</p>
-<p>[TRIXIE QUICK] And that's the heart of this story, isn't it? Light pollution. Phoenix — massive city, bright sky. Shooting the Horsehead from there is like trying to photograph a candle flame in the middle of Times Square.</p>
-<p>[LOLA MIDNIGHT] One hundred fifteen hours against Times Square.</p>
-<p>[ISADORA VANE] And it worked.</p>
-<p>[TRIXIE QUICK] The Horsehead Nebula — Barnard 33 — isn't just a pretty picture. It's a dark nebula sitting inside the Orion Molecular Cloud Complex. New stars are being born right now in the same gas. Alnitak — the easternmost star in Orion's Belt — illuminates the whole region. The Flame Nebula glows just below it, caught in the same star-making fire. Greg Meyer captured it all from his backyard with equipment that would've seemed preposterous twenty years ago. Amateur astrophotography has come so far. The science is the same. The art is entirely his own.</p>
-<p>[LOLA MIDNIGHT] You don't need a billion-dollar telescope to see the universe. You need patience, skill, and the willingness to wait — a hundred fifteen hours — for the photons to find you.</p>
-<p>[ISADORA VANE] And maybe just a little bit of creative rebellion against the way things are supposed to look.</p>
-<p>[TRIXIE QUICK] That's our show. For today, we'll leave you looking up. The cosmos is closer than you think.</p>
+                
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">Okay, picture this. Phoenix, Arizona. Half a million people. Streetlights everywhere. You're trying to photograph something 1,400 light-years away. In a city that basically never goes dark.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">That should be impossible, right?</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">Well, Greg Meyer thought otherwise. In eleven — make that one — one hundred fifteen hours of telescope time, this Phoenix astro-photographer captured the Horsehead Nebula with a backyard setup that costs a tiny fraction of what the James Webb Space Telescope does. And the result? Image that makes professional astronomers stop and stare. I'm Trixie Quick. On this show, we chase the impossible. Today: patience as a superpower, light pollution as an opponent, and the art of seeing something nobody else can.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">I've got two voices with me. Lola Midnight — welcome.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">Thanks for having me. Look, I've been around enough instruments to know when something special is happening. And eleven hundred-fifteen hours? That's not a photograph. That's a love letter written in photons.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ISADORA VANE</div>
+                <div class="dialogue">A love letter? I'm calling it a creative heist. Meyer looked at the standard red-and-black astrophotography palette and said, "Nah." He went for complementary colors — something completely different. That takes guts.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">Let's talk gears for a second, because this is where the story gets weird. Most people picture NASA-level equipment. Greg's got a Radian Raptor — sixty-one millimeters. Tiny. And a ZWO camera that captures eighty percent of the photons that hit it. Eighty percent. That's better than most eyes.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">You know what I love about that? The Horsehead Nebula is named after its shape — a dark cloud of dust silhouetted against glowing gas. It sits in the constellation Orion. It's twelve hundred to sixteen hundred light-years away. The radiation that makes it glow is also creating new stars. We're looking at star birth, Greg's telescope, because — two thousand years ago — captured from a backyard in Phoenix.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ISADORA VANE</div>
+                <div class="dialogue">Let's be clear — the visual form is iconic because it only exists in visible light. The James Webb Space Telescope saw it too. Hubble did. But in Spitzer's infrared view? The horsehead disappears. The shape we know? That's visible-light reality. And Meyer — using nothing more than a modest refractor — proved the gap between amateur and professional observatories has shrunk to almost nothing.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">So let me lay out the timeline, because this is where the patience flex kicks in. He didn't take this in one night. This was November twenty twenty five to March twenty twenty six. Five months of waiting for clear skies. Imaging Orion when the winter sky gave him the chance. Night after night, thousands of short exposures. Then — and this is the magic — software aligns them. Stacks only the best frames. Every single photon stored on the same canvas. Signal amplifies massively. Random noise averages out. What emerges is something invisible in a single exposure.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">Professional observatories fight for telescope hours. Greg had a backyard and a dream. Unlimited time. That's the real weapon here. One hundred fifteen hours of pure exposure. That's four point eight days. Spread over five months — waiting.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ISADORA VANE</div>
+                <div class="dialogue">But the processing — that's where it became art. Phase one, pure science in PixInsight: Dynamic Background Extraction to kill Phoenix's light pollution gradient. Deconvolution. Sharpening with BlurXTerminator. Spectrophotometric color calibration. Noise reduction. Then — and this is the turn — he moved to Photoshop and Lightroom. And he started going down a rabbit hole. His own words: "I really started going down a rabbit hole. I like this color combo with some complementary colors, something different." He started with a technical goal and ended with something visually unique.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">And that's the heart of this story, isn't it? Light pollution. Phoenix — massive city, bright sky. Shooting the Horsehead from there is like trying to photograph a candle flame in the middle of Times Square.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">One hundred fifteen hours against Times Square.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ISADORA VANE</div>
+                <div class="dialogue">And it worked.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">The Horsehead Nebula — Barnard 33 — isn't just a pretty picture. It's a dark nebula sitting inside the Orion Molecular Cloud Complex. New stars are being born right now in the same gas. Alnitak — the easternmost star in Orion's Belt — illuminates the whole region. The Flame Nebula glows just below it, caught in the same star-making fire. Greg Meyer captured it all from his backyard with equipment that would've seemed preposterous twenty years ago. Amateur astrophotography has come so far. The science is the same. The art is entirely his own.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">You don't need a billion-dollar telescope to see the universe. You need patience, skill, and the willingness to wait — a hundred fifteen hours — for the photons to find you.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ISADORA VANE</div>
+                <div class="dialogue">And maybe just a little bit of creative rebellion against the way things are supposed to look.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">TRIXIE QUICK</div>
+                <div class="dialogue">That's our show. For today, we'll leave you looking up. The cosmos is closer than you think.</div>
+            </div>
             </div>
         </main>
         

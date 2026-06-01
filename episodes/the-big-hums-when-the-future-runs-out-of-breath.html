@@ -93,10 +93,12 @@
         td a:hover { text-decoration: underline; }
 
         /* Transcript Styles */
-        .transcript { background: #1e293b; border-radius: 1rem; padding: 2rem; margin-top: 2rem; border: 1px solid #334155; }
+        .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
         .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .transcript p { margin-bottom: 1rem; color: #cbd5e1; }
-        .transcript strong { color: #f8fafc; }
+        
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+        .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .dialogue { color: #cbd5e1; line-height: 1.6; }
         
         .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
@@ -130,27 +132,110 @@
         
             <div class="transcript">
                 <h3>Transcript</h3>
-                <p><strong># The Big Hums:</strong> When the Future Runs Out of Breath</p>
-<p><strong>**Duration:</strong> ** ~4 minutes | **Format:** Host-Guest</p>
-<p><strong>**Host:</strong> ** Lola Midnight | **Guest:** Alistair Thorne</p>
-<p>---</p>
-<p><strong>[SFX]:</strong> [Ambient hum of a data center fades in — deep, rhythmic. Underneath, a warm upright bass line begins.]</p>
-<p><strong>[MUSIC]:</strong> [Bass walks quietly underneath as the hum slowly fades]</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (smooth, conversational) There's this giant in the server room. Nobody really saw it coming — not the size of it, not the appetite. While we were all marveling at the chatbots, the whole operation was quietly eating through more electricity than a small country.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (raspy, thoughtful) In my century, they spoke of automation as sorcery — spells cast upon paper. But this? This is sorcery of the body, not the mind. Copper. Helium. Gasoline. The invisible is now very, very heavy.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (leaning in) The invisible is heavy. Let me paint you a picture. Data center energy demand more than doubled since 2022. The International Energy Agency says it'll double again by 2030.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (a note of wonder) The American grid needs ninety gigawatts of new power. Ninety. And they're building twenty-four. That's not a gap, my dear Lola. That's a canyon.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (sotto) A canyon of wire and concrete. And the wild part? This whole artificial intelligence empire depends on things you'd never expect.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (warming to it) Tell them about helium.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (smiling) Thirty percent of the world's helium flows through one refinery in Qatar. A drone strikes, the pipes stop, and it takes *years* to repair. No helium, no cooling. No cooling, no computing.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (amused) The great artificial mind goes breathless because of a noble gas. And copper mines in Indonesia cutting back from a sulfur shortage. Microchips that need parts that no longer exist. One tiny component vanishes from one warehouse and the entire chain goes quiet.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (shifting tone) And then there's the money. The article puts nine trillion dollars on the table by 2030. And Open AI — described as "hemorrhaging more money than any company in history." Their burn rate went from thirty-five billion to two hundred and twenty-eight billion.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (careful) Over a trillion dollars in corporate bonds already issued to AI companies. Promises made to people who are not yet profitable. All entirely codependent — if one goes down, they all go down.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (softer, thoughtful) You know, I've been thinking about the two outcomes this piece describes. One: the bubble folds in on itself, like a tired sigh. Two: a terrible inflection point. You have to stop, step back, and ask — is this building toward something true? Or just building toward building?</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (warm, sincere) That last one is the one worth carrying. Technology is a love letter to what we think the world could be. The mistake is forgetting that the world we're building is made of real things. Real rock, real air, real hands. AI is not an illusion. And illusions can't build themselves.</p>
-<p><strong>[LOLA MIDNIGHT]:</strong> (warm, direct to audience) That's all the time we have tonight. If this made you look at your phone differently — maybe wonder about the copper and the helium and the hands that built it — then I've done my job. Keep asking questions. I'm Lola Midnight, and this is The Big Hums.</p>
-<p><strong>[ALISTAIR THORNE]:</strong> (faint, warm) Till next time.</p>
-<p><strong>[SFX]:</strong> [Bass line swells. The data center hum returns — softer now, almost a lullaby. Music fades out.]</p>
+                
+            <div class="transcript-line">
+                <div class="speaker"># The Big Hums</div>
+                <div class="dialogue">When the Future Runs Out of Breath</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">**Duration</div>
+                <div class="dialogue">** ~4 minutes | **Format:** Host-Guest</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">**Host</div>
+                <div class="dialogue">** Lola Midnight | **Guest:** Alistair Thorne</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="dialogue">---</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">SFX</div>
+                <div class="dialogue">: [Ambient hum of a data center fades in — deep, rhythmic. Underneath, a warm upright bass line begins.]</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">MUSIC</div>
+                <div class="dialogue">: [Bass walks quietly underneath as the hum slowly fades]</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (smooth, conversational) There's this giant in the server room. Nobody really saw it coming — not the size of it, not the appetite. While we were all marveling at the chatbots, the whole operation was quietly eating through more electricity than a small country.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (raspy, thoughtful) In my century, they spoke of automation as sorcery — spells cast upon paper. But this? This is sorcery of the body, not the mind. Copper. Helium. Gasoline. The invisible is now very, very heavy.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (leaning in) The invisible is heavy. Let me paint you a picture. Data center energy demand more than doubled since 2022. The International Energy Agency says it'll double again by 2030.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (a note of wonder) The American grid needs ninety gigawatts of new power. Ninety. And they're building twenty-four. That's not a gap, my dear Lola. That's a canyon.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (sotto) A canyon of wire and concrete. And the wild part? This whole artificial intelligence empire depends on things you'd never expect.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (warming to it) Tell them about helium.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (smiling) Thirty percent of the world's helium flows through one refinery in Qatar. A drone strikes, the pipes stop, and it takes *years* to repair. No helium, no cooling. No cooling, no computing.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (amused) The great artificial mind goes breathless because of a noble gas. And copper mines in Indonesia cutting back from a sulfur shortage. Microchips that need parts that no longer exist. One tiny component vanishes from one warehouse and the entire chain goes quiet.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (shifting tone) And then there's the money. The article puts nine trillion dollars on the table by 2030. And Open AI — described as "hemorrhaging more money than any company in history." Their burn rate went from thirty-five billion to two hundred and twenty-eight billion.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (careful) Over a trillion dollars in corporate bonds already issued to AI companies. Promises made to people who are not yet profitable. All entirely codependent — if one goes down, they all go down.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (softer, thoughtful) You know, I've been thinking about the two outcomes this piece describes. One: the bubble folds in on itself, like a tired sigh. Two: a terrible inflection point. You have to stop, step back, and ask — is this building toward something true? Or just building toward building?</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (warm, sincere) That last one is the one worth carrying. Technology is a love letter to what we think the world could be. The mistake is forgetting that the world we're building is made of real things. Real rock, real air, real hands. AI is not an illusion. And illusions can't build themselves.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">LOLA MIDNIGHT</div>
+                <div class="dialogue">: (warm, direct to audience) That's all the time we have tonight. If this made you look at your phone differently — maybe wonder about the copper and the helium and the hands that built it — then I've done my job. Keep asking questions. I'm Lola Midnight, and this is The Big Hums.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">ALISTAIR THORNE</div>
+                <div class="dialogue">: (faint, warm) Till next time.</div>
+            </div>
+
+            <div class="transcript-line">
+                <div class="speaker">SFX</div>
+                <div class="dialogue">: [Bass line swells. The data center hum returns — softer now, almost a lullaby. Music fades out.]</div>
+            </div>
             </div>
         </main>
         

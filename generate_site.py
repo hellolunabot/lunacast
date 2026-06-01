@@ -245,12 +245,32 @@ def format_transcript_html(transcript):
         line = line.strip()
         if not line: continue
         
-        # Check for speaker identifiers like "Speaker Name:"
-        if ':' in line and len(line.split(':', 1)[0]) < 30:
-            speaker, text = line.split(':', 1)
-            html.append(f'<p><strong>{escape(speaker)}:</strong> {escape(text.strip())}</p>')
+        speaker = None
+        dialogue = line
+        
+        # Check for bracketed speaker identifiers like "[Speaker Name]"
+        bracket_match = re.match(r'^\[([^\]]+)\]\s*(.*)', line)
+        if bracket_match:
+            speaker = bracket_match.group(1)
+            dialogue = bracket_match.group(2)
+        # Check for colon speaker identifiers like "Speaker Name:"
+        elif ':' in line and len(line.split(':', 1)[0]) < 30:
+            speaker, dialogue = line.split(':', 1)
+            speaker = speaker.strip()
+            dialogue = dialogue.strip()
+        
+        if speaker:
+            html.append(f'''
+            <div class="transcript-line">
+                <div class="speaker">{escape(speaker)}</div>
+                <div class="dialogue">{escape(dialogue)}</div>
+            </div>''')
         else:
-            html.append(f'<p>{escape(line)}</p>')
+            html.append(f'''
+            <div class="transcript-line">
+                <div class="dialogue">{escape(line)}</div>
+            </div>''')
+            
     return '\n'.join(html)
 
 # --- Main Logic ---
@@ -392,10 +412,12 @@ def generate():
         td a:hover {{ text-decoration: underline; }}
 
         /* Transcript Styles */
-        .transcript {{ background: #1e293b; border-radius: 1rem; padding: 2rem; margin-top: 2rem; border: 1px solid #334155; }}
+        .transcript {{ background: transparent; padding: 0; margin-top: 2rem; border: none; }}
         .transcript h3 {{ margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }}
-        .transcript p {{ margin-bottom: 1rem; color: #cbd5e1; }}
-        .transcript strong {{ color: #f8fafc; }}
+        
+        .transcript-line {{ background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }}
+        .speaker {{ color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }}
+        .dialogue {{ color: #cbd5e1; line-height: 1.6; }}
         
         .back-link {{ display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }}
         .back-link:hover {{ text-decoration: underline; }}
