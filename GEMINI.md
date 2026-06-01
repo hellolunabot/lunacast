@@ -9,6 +9,7 @@ LunaCast is a zero-dependency static site and RSS feed generator for the "LunaCa
 - **Architecture**: A single-script generator (`generate_site.py`) that performs the following:
     - Scans the `audio/` directory for MP3 files.
     - Parses ID3v2.3 and ID3v2.4 tags using a custom-built parser to extract titles, authors, and summaries.
+    - Automatically converts `.srt` transcripts to `.vtt` for platform compatibility.
     - Estimates audio duration by analyzing MPEG frame headers.
     - Renders HTML and XML templates using Python f-strings.
 
@@ -28,9 +29,10 @@ This project has **no external dependencies**. Do not introduce libraries like `
 ### Metadata & ID3 Tags
 The generator relies on specific ID3 frames:
 - `TIT2`: Episode Title.
-- `TPE1`: Artist (displayed as "Voices" on the website).
+- `TPE1`: Artist (displayed as "Voices" on the website). These are used to normalize and format speaker names in the transcript (e.g., mapping `ALISTAIRTHORNE` to `ALISTAIR THORNE`).
 - `COMM` or `TXXX:comment`: Episode Summary.
 - `TPOS` / `TRCK`: Season and Episode numbers.
+- `USLT`: Embedded transcript (fallback if no `.vtt` or `.srt` file is found).
 
 ### XML & RSS Validity
 - All text content inserted into `rss.xml` **must** be escaped using `xml.sax.saxutils.escape` to ensure the feed is valid.
@@ -46,3 +48,7 @@ Currently, the project uses manual verification and structural checks (e.g., `xm
 ## Workflow
 
 - **Commits & Pushes**: NEVER commit or push changes without explicit instruction from the user.
+- **Commit Protocol**:
+    1. **Gather**: Run `git status` and `git diff` to review all changes (including generated files).
+    2. **Propose**: Present a draft commit message and a list of files to be staged for user review.
+    3. **Execute**: Only run `git commit` and `git push` after the user has explicitly confirmed the draft.
