@@ -341,6 +341,18 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{ep['title']} - {PODCAST_NAME}</title>
+
+    <!-- Social Sharing Meta Tags -->
+    <meta property="og:title" content="{ep['title']} - {PODCAST_NAME}">
+    <meta property="og:description" content="{escape(ep['description'], {'"': '&quot;'})}">
+    <meta property="og:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+    <meta property="og:url" content="{PODCAST_LINK}{ep['page_url']}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{ep['title']} - {PODCAST_NAME}">
+    <meta name="twitter:description" content="{escape(ep['description'], {'"': '&quot;'})}">
+    <meta name="twitter:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+
     <style>
         {common_styles.replace(LOGO_PATH, '../' + LOGO_PATH)}
     </style>
@@ -384,6 +396,18 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Episodes - {PODCAST_NAME}</title>
+
+    <!-- Social Sharing Meta Tags -->
+    <meta property="og:title" content="All Episodes - {PODCAST_NAME}">
+    <meta property="og:description" content="{PODCAST_DESCRIPTION}">
+    <meta property="og:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+    <meta property="og:url" content="{PODCAST_LINK}episodes.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="All Episodes - {PODCAST_NAME}">
+    <meta name="twitter:description" content="{PODCAST_DESCRIPTION}">
+    <meta name="twitter:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+
     <style>
         {common_styles}
     </style>
@@ -425,6 +449,18 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{PODCAST_NAME}</title>
+
+    <!-- Social Sharing Meta Tags -->
+    <meta property="og:title" content="{PODCAST_NAME}">
+    <meta property="og:description" content="{PODCAST_DESCRIPTION}">
+    <meta property="og:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+    <meta property="og:url" content="{PODCAST_LINK}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{PODCAST_NAME}">
+    <meta name="twitter:description" content="{PODCAST_DESCRIPTION}">
+    <meta name="twitter:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
+
     <style>
         {common_styles}
     </style>
