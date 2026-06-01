@@ -263,39 +263,72 @@ def srt_to_vtt(srt_path):
     except Exception:
         return False
 
-def format_transcript_html(transcript):
+def format_speaker_name(name, author_list):
+    """Format speaker name (e.g. 'ALISTAIRTHORNE' -> 'ALISTAIR THORNE') using the author metadata."""
+    if not name or not author_list:
+        return name
+    
+    # Normalize inputs for comparison
+    clean_name = name.strip('[]').strip().upper().replace(" ", "")
+    authors = [a.strip() for a in author_list.split(',')]
+    
+    for author in authors:
+        # Check against underscored/slugified author names (e.g. 'alistair_thorne')
+        normalized_author = author.upper().replace("_", "").replace(" ", "")
+        if clean_name == normalized_author:
+            return author.replace("_", " ").upper()
+    
+    return name.strip('[]').strip().upper()
+
+def format_transcript_html(transcript, author_list=""):
     if not transcript:
         return "<p>No transcript available for this episode.</p>"
     
     html = []
-    for line in transcript.split('\n'):
+    lines = transcript.split('\n')
+    pending_speaker = None
+    
+    for line in lines:
         line = line.strip()
-        if not line: continue
+        if not line or line == "WEBVTT": continue
         
         speaker = None
         dialogue = line
         
-        # Check for bracketed speaker identifiers like "[Speaker Name]"
+        # 1. Check for bracketed speaker identifiers like "[Speaker Name]"
         bracket_match = re.match(r'^\[([^\]]+)\]\s*(.*)', line)
         if bracket_match:
             speaker = bracket_match.group(1)
             dialogue = bracket_match.group(2)
-        # Check for colon speaker identifiers like "Speaker Name:"
+        # 2. Check for colon speaker identifiers like "Speaker Name:"
         elif ':' in line and len(line.split(':', 1)[0]) < 30:
-            speaker, dialogue = line.split(':', 1)
-            speaker = speaker.strip()
-            dialogue = dialogue.strip()
+            parts = line.split(':', 1)
+            speaker = parts[0].strip()
+            dialogue = parts[1].strip()
         
+        # If we found a speaker, format it
         if speaker:
+            speaker = format_speaker_name(speaker, author_list)
+            
+            # If there's no dialogue on this line, buffer the speaker for the next line
+            if not dialogue:
+                pending_speaker = speaker
+                continue
+        
+        # Use the buffered speaker if we have one and this line didn't have its own
+        current_speaker = speaker or pending_speaker
+        pending_speaker = None # Reset buffer
+        
+        if current_speaker:
             html.append(f'''
             <div class="transcript-line">
-                <div class="speaker">{escape(speaker)}</div>
+                <div class="speaker">{escape(current_speaker)}</div>
                 <div class="dialogue">{escape(dialogue)}</div>
             </div>''')
         else:
             html.append(f'''
             <div class="transcript-line">
-                <div class="dialogue">{escape(line)}</div>
+                <div class="dialogue">{escape(dialogue)}</div>
             </div>''')
             
     return '\n'.join(html)
@@ -502,7 +535,7 @@ def generate():
 
     # --- Generate individual episode pages ---
     for ep in episodes:
-        transcript_html = format_transcript_html(ep['transcript'])
+        transcript_html = format_transcript_html(ep['transcript'], ep['author'])
         page_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
