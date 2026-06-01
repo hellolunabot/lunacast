@@ -703,7 +703,7 @@ def generate():
         if ep['season']: extra_tags.append(f"<itunes:season>{ep['season']}</itunes:season>")
         if ep['episode_num']: extra_tags.append(f"<itunes:episode>{ep['episode_num']}</itunes:episode>")
         if ep['transcript_url']: 
-            extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["transcript_url"]}" type="{ep["transcript_type"]}" language="en"/>')
+            extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["transcript_url"]}" type="{ep["transcript_type"]}" language="en" rel="transcript"/>')
         
         itunes_tags = "\n            ".join(extra_tags)
         if itunes_tags:
@@ -738,7 +738,7 @@ def generate():
 <rss version="2.0" 
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:podcast="https://podcastindex.org/namespace/1.0">
+    xmlns:podcast="https://podcastindex.org/">
     <channel>
         <title>{escape(PODCAST_NAME)}</title>
         <link>{PODCAST_LINK}</link>
