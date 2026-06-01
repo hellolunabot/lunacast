@@ -614,11 +614,15 @@ def generate():
     # --- Generate rss.xml ---
     rss_items = []
     for ep in episodes:
-        itunes_tags = ""
-        if ep['season']: itunes_tags += f"<itunes:season>{ep['season']}</itunes:season>"
-        if ep['episode_num']: itunes_tags += f"<itunes:episode>{ep['episode_num']}</itunes:episode>"
-        if ep['srt_url']: itunes_tags += f'\n            <podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/x-subrip" language="en"/>'
+        extra_tags = []
+        if ep['season']: extra_tags.append(f"<itunes:season>{ep['season']}</itunes:season>")
+        if ep['episode_num']: extra_tags.append(f"<itunes:episode>{ep['episode_num']}</itunes:episode>")
+        if ep['srt_url']: extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/x-subrip" language="en"/>')
         
+        itunes_tags = "\n            ".join(extra_tags)
+        if itunes_tags:
+            itunes_tags = "\n            " + itunes_tags
+
         # Escape characters for XML
         e_title = escape(ep['title'])
         e_author = escape(ep['author'])
@@ -631,17 +635,15 @@ def generate():
             <description>{e_description}</description>
             <pubDate>{ep['pub_date_rss']}</pubDate>
             <enclosure url="{PODCAST_LINK}{ep['url']}" length="{ep['file_size']}" type="audio/mpeg"/>
-            <itunes:duration>{ep['duration_sec']}</itunes:duration>
+            <itunes:duration>{ep['duration_str']}</itunes:duration>
             <itunes:image href="{PODCAST_LINK}{THUMBNAIL_PATH}"/>
-            <guid isPermaLink="false">{ep['filename']}</guid>
-            {itunes_tags}
+            <guid isPermaLink="false">{ep['filename']}</guid>{itunes_tags}
         </item>""")
 
 
     rss_template = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
-    xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
         <title>{escape(PODCAST_NAME)}</title>
@@ -653,7 +655,7 @@ def generate():
         <itunes:type>episodic</itunes:type>
         <itunes:owner>
             <itunes:name>{escape(PODCAST_AUTHOR)}</itunes:name>
-            <itunes:email>contact@example.com</itunes:email>
+            <itunes:email>lunabot@hellolunabot.com</itunes:email>
         </itunes:owner>
         <itunes:image href="{PODCAST_LINK}{THUMBNAIL_PATH}"/>
         <itunes:category text="Technology"/>

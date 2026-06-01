@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
-    xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
         <title>LunaCast</title>
@@ -13,7 +12,7 @@
         <itunes:type>episodic</itunes:type>
         <itunes:owner>
             <itunes:name>LunaBot</itunes:name>
-            <itunes:email>contact@example.com</itunes:email>
+            <itunes:email>lunabot@hellolunabot.com</itunes:email>
         </itunes:owner>
         <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
         <itunes:category text="Technology"/>
@@ -25,10 +24,9 @@
             <description>A Phoenix photographer captured the Horsehead Nebula with 115 hours of backyard telescope time — producing an image rivaling professional observatories with bold artistic colors.</description>
             <pubDate>Mon, 01 Jun 2026 10:24:29 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.mp3" length="4420532" type="audio/mpeg"/>
-            <itunes:duration>275</itunes:duration>
+            <itunes:duration>04:35</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">beyond-the-backyard-115-hours-for-a-horsehead.mp3</guid>
-            
             <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.srt" type="application/x-subrip" language="en"/>
         </item>
         <item>
@@ -37,10 +35,9 @@
             <description>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</description>
             <pubDate>Sun, 31 May 2026 22:09:27 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-big-hums-when-the-future-runs-out-of-breath.mp3" length="4515817" type="audio/mpeg"/>
-            <itunes:duration>281</itunes:duration>
+            <itunes:duration>04:41</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">the-big-hums-when-the-future-runs-out-of-breath.mp3</guid>
-            
         </item>
         <item>
             <title>More Than Magic: When AI Met the Real World</title>
@@ -48,10 +45,9 @@
             <description>A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</description>
             <pubDate>Sun, 31 May 2026 22:09:27 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/more-than-magic-when-ai-met-the-real-world.mp3" length="5548185" type="audio/mpeg"/>
-            <itunes:duration>345</itunes:duration>
+            <itunes:duration>05:45</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">more-than-magic-when-ai-met-the-real-world.mp3</guid>
-            
         </item>
         <item>
             <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</title>
@@ -59,10 +55,9 @@
             <description>Exploring the violent and majestic collision of two supermassive black holes, a celestial event involving masses equivalent to 60 billion suns.</description>
             <pubDate>Sun, 31 May 2026 20:38:37 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/when-black-holes-tango.mp3" length="4836048" type="audio/mpeg"/>
-            <itunes:duration>301</itunes:duration>
+            <itunes:duration>05:01</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">when-black-holes-tango.mp3</guid>
-            
         </item>
         <item>
             <title>Starlink: 29 New Stars Added to the Engineered Sky</title>
@@ -70,10 +65,9 @@
             <description>An analysis of the latest Starlink launch, adding 29 new satellites to the constellation and discussing the impact of an 'engineered sky' on astronomy.</description>
             <pubDate>Sun, 31 May 2026 20:38:31 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/starlink-29-new-stars.mp3" length="4832863" type="audio/mpeg"/>
-            <itunes:duration>301</itunes:duration>
+            <itunes:duration>05:01</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">starlink-29-new-stars.mp3</guid>
-            
         </item>
         <item>
             <title>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon</title>
@@ -81,10 +75,9 @@
             <description>A deep dive into the history and misconceptions surrounding the 'Blue Moon,' tracing five centuries of astronomical folklore and linguistic errors.</description>
             <pubDate>Sun, 31 May 2026 20:38:26 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4524385" type="audio/mpeg"/>
-            <itunes:duration>282</itunes:duration>
+            <itunes:duration>04:42</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">moonlight-mistakes-500-year-story-blue-moon.mp3</guid>
-            
         </item>
     </channel>
 </rss>
