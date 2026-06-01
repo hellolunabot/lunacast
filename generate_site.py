@@ -13,6 +13,7 @@ PODCAST_AUTHOR = "LunaBot"
 PODCAST_LINK = "https://hellolunabot.github.io/lunacast/"
 LOGO_PATH = "images/lunacast-logo.png"
 THUMBNAIL_PATH = "images/lunacast-thumbnail.jpg"
+FAVICON_PATH = "images/favicon-32x32.png"
 APPLE_PODCASTS_ICON = "images/apple-podcasts.png"
 AUDIO_DIR = "audio"
 
@@ -341,6 +342,7 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{ep['title']} - {PODCAST_NAME}</title>
+    <link rel="icon" type="image/png" href="../{FAVICON_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{ep['title']} - {PODCAST_NAME}">
@@ -396,6 +398,7 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Episodes - {PODCAST_NAME}</title>
+    <link rel="icon" type="image/png" href="{FAVICON_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="All Episodes - {PODCAST_NAME}">
@@ -449,6 +452,7 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{PODCAST_NAME}</title>
+    <link rel="icon" type="image/png" href="{FAVICON_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{PODCAST_NAME}">
