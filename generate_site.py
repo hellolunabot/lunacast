@@ -617,7 +617,7 @@ def generate():
         itunes_tags = ""
         if ep['season']: itunes_tags += f"<itunes:season>{ep['season']}</itunes:season>"
         if ep['episode_num']: itunes_tags += f"<itunes:episode>{ep['episode_num']}</itunes:episode>"
-        if ep['srt_url']: itunes_tags += f'\n            <podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/srt"/>'
+        if ep['srt_url']: itunes_tags += f'\n            <podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/x-subrip" language="en"/>'
         
         # Escape characters for XML
         e_title = escape(ep['title'])

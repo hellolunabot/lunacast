@@ -29,7 +29,7 @@
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">beyond-the-backyard-115-hours-for-a-horsehead.mp3</guid>
             
-            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.srt" type="application/srt"/>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.srt" type="application/x-subrip" language="en"/>
         </item>
         <item>
             <title>The Big Hums: When the Future Runs Out of Breath</title>
