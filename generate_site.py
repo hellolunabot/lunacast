@@ -650,6 +650,9 @@ def generate():
         rss_items.append(f"""
         <item>
             <title>{e_title}</title>
+            <itunes:title>{e_title}</itunes:title>
+            <itunes:summary>{e_description}</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
             <link>{PODCAST_LINK}{ep['page_url']}</link>
             <itunes:author>{e_author}</itunes:author>
             <description>{e_description}</description>
