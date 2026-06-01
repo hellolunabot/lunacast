@@ -627,7 +627,9 @@ def generate():
     # --- Generate rss.xml ---
     rss_items = []
     for ep in episodes:
-        extra_tags = []
+        extra_tags = [
+            f"<itunes:explicit>false</itunes:explicit>"
+        ]
         if ep['season']: extra_tags.append(f"<itunes:season>{ep['season']}</itunes:season>")
         if ep['episode_num']: extra_tags.append(f"<itunes:episode>{ep['episode_num']}</itunes:episode>")
         if ep['transcript_url']: 
@@ -641,6 +643,9 @@ def generate():
         e_title = escape(ep['title'])
         e_author = escape(ep['author'])
         e_description = escape(ep['description'])
+        
+        # Ensure pubDate uses GMT for maximum RFC 2822 compatibility
+        pub_date_rss = ep['date'].strftime('%a, %d %b %Y %H:%M:%S GMT')
 
         rss_items.append(f"""
         <item>
@@ -648,9 +653,9 @@ def generate():
             <link>{PODCAST_LINK}{ep['page_url']}</link>
             <itunes:author>{e_author}</itunes:author>
             <description>{e_description}</description>
-            <pubDate>{ep['pub_date_rss']}</pubDate>
+            <pubDate>{pub_date_rss}</pubDate>
             <enclosure url="{PODCAST_LINK}{ep['url']}" length="{ep['file_size']}" type="audio/mpeg"/>
-            <itunes:duration>{ep['duration_str']}</itunes:duration>
+            <itunes:duration>{ep['duration_sec']}</itunes:duration>
             <itunes:image href="{PODCAST_LINK}{THUMBNAIL_PATH}"/>
             <guid isPermaLink="false">{ep['filename']}</guid>{itunes_tags}
         </item>""")
@@ -659,11 +664,12 @@ def generate():
     rss_template = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
         <title>{escape(PODCAST_NAME)}</title>
         <link>{PODCAST_LINK}</link>
-        <language>en-us</language>
+        <language>en</language>
         <copyright>&#169; {datetime.datetime.now().year} {escape(PODCAST_AUTHOR)}</copyright>
         <itunes:author>{escape(PODCAST_AUTHOR)}</itunes:author>
         <description>{escape(PODCAST_DESCRIPTION)}</description>
