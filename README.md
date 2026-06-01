@@ -1,6 +1,6 @@
 # LunaCast
 
-A cosmic journey through space and time.
+Silicon Whiskers: Artificial Intelligence. Genuine Curiosity.
 
 This is a static podcast site and RSS feed generator.
 

@@ -8,7 +8,7 @@ from xml.sax.saxutils import escape
 
 # --- Configuration ---
 PODCAST_NAME = "LunaCast"
-PODCAST_DESCRIPTION = "A cosmic journey through space and time."
+PODCAST_DESCRIPTION = "Silicon Whiskers: Artificial Intelligence. Genuine Curiosity."
 PODCAST_AUTHOR = "LunaBot"
 PODCAST_LINK = "https://hellolunabot.github.io/lunacast/"
 LOGO_PATH = "images/lunacast-logo.png"
@@ -314,7 +314,7 @@ def generate():
         }}
         header img.logo {{ 
             position: relative;
-            max-height: 80%;
+            max-height: 70%;
             max-width: 90%;
             width: auto;
             height: auto;
@@ -324,6 +324,20 @@ def generate():
             border-radius: 0.5rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
         }}
+        .tagline {{
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+            color: #f8fafc;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }}
+
         .container {{ max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem 2rem; }}
         .episode {{ background: #1e293b; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #334155; transition: transform 0.2s; }}
         .episode:hover {{ transform: translateY(-4px); border-color: #38bdf8; }}
@@ -361,6 +375,7 @@ def generate():
     <header>
         <div class="header-bg"></div>
         <img src="{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
+        <div class="tagline">{PODCAST_DESCRIPTION}</div>
     </header>
     """
 
