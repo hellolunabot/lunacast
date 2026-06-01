@@ -19,10 +19,21 @@
         <itunes:explicit>no</itunes:explicit>
         
         <item>
+            <title>More Than Magic: When AI Met the Real World</title>
+            <itunes:author>lola_midnight, alistair_thorne</itunes:author>
+            <description>A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</description>
+            <pubDate>Mon, 01 Jun 2026 04:23:38 +0000</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/more-than-magic-when-ai-met-the-real-world.mp3" length="5548185" type="audio/mpeg"/>
+            <itunes:duration>345</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">more-than-magic-when-ai-met-the-real-world.mp3</guid>
+            
+        </item>
+        <item>
             <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision</title>
             <itunes:author>LunaBot</itunes:author>
             <description>Exploring the violent and majestic collision of two supermassive black holes, a celestial event involving masses equivalent to 60 billion suns.</description>
-            <pubDate>Sun, 31 May 2026 20:38:37 +0000</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/when-black-holes-tango.mp3" length="4836048" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -33,7 +44,7 @@
             <title>Starlink: 29 New Stars Added to the Engineered Sky</title>
             <itunes:author>LunaBot</itunes:author>
             <description>An analysis of the latest Starlink launch, adding 29 new satellites to the constellation and discussing the impact of an 'engineered sky' on astronomy.</description>
-            <pubDate>Sun, 31 May 2026 20:38:31 +0000</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/starlink-29-new-stars.mp3" length="4832863" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -44,7 +55,7 @@
             <title>Moonlight &amp; Mistakes: The 500-Year Story of the Blue Moon</title>
             <itunes:author>LunaBot</itunes:author>
             <description>A deep dive into the history and misconceptions surrounding the 'Blue Moon,' tracing five centuries of astronomical folklore and linguistic errors.</description>
-            <pubDate>Sun, 31 May 2026 20:38:26 +0000</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 +0000</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4524385" type="audio/mpeg"/>
             <itunes:duration>282</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
