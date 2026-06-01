@@ -670,9 +670,7 @@ def generate():
         if ep['season']: extra_tags.append(f"<itunes:season>{ep['season']}</itunes:season>")
         if ep['episode_num']: extra_tags.append(f"<itunes:episode>{ep['episode_num']}</itunes:episode>")
         if ep['transcript_url']: 
-            # Add ?v=timestamp to force Apple to re-crawl the file
-            v_url = f"{PODCAST_LINK}{ep['transcript_url']}?v={version_ts}"
-            extra_tags.append(f'<podcast:transcript url="{v_url}" type="{ep["transcript_type"]}" language="en" rel="captions"/>')
+            extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["transcript_url"]}" type="{ep["transcript_type"]}" language="en"/>')
         
         itunes_tags = "\n            ".join(extra_tags)
         if itunes_tags:
