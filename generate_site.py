@@ -236,6 +236,33 @@ def parse_srt(srt_text):
         text_lines.append(line)
     return '\n'.join(text_lines)
 
+def srt_to_vtt(srt_path):
+    """Convert SRT file to WebVTT format for Apple Podcasts compatibility."""
+    vtt_path = srt_path.replace('.srt', '.vtt')
+    try:
+        with open(srt_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # 1. Header
+        vtt_content = "WEBVTT\n\n"
+        
+        # 2. Convert timestamps (comma to dot ONLY in timestamps)
+        def fix_timestamp(match):
+            return match.group(0).replace(',', '.')
+        
+        content = re.sub(r'\d{2}:\d{2}:\d{2},\d{3}', fix_timestamp, content)
+        
+        # 3. Remove SRT index numbers
+        content = re.sub(r'^\d+\s*\n(?=\d{2}:\d{2}:\d{2})', '', content, flags=re.MULTILINE)
+        
+        vtt_content += content.strip() + "\n"
+        
+        with open(vtt_path, 'w', encoding='utf-8') as f:
+            f.write(vtt_content)
+        return True
+    except Exception:
+        return False
+
 def format_transcript_html(transcript):
     if not transcript:
         return "<p>No transcript available for this episode.</p>"
@@ -294,6 +321,11 @@ def generate():
         transcript = id3.get('USLT', "")
         vtt_file_path = os.path.splitext(file_path)[0] + '.vtt'
         srt_file_path = os.path.splitext(file_path)[0] + '.srt'
+        
+        # Automatically convert SRT to VTT if it exists and VTT doesn't
+        if os.path.exists(srt_file_path) and not os.path.exists(vtt_file_path):
+            srt_to_vtt(srt_file_path)
+
         transcript_url = None
         transcript_type = None
 
