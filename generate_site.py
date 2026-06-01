@@ -3,6 +3,7 @@ import glob
 import datetime
 import struct
 import base64
+import re
 from xml.sax.saxutils import escape
 
 # --- Configuration ---
@@ -17,7 +18,7 @@ AUDIO_DIR = "audio"
 
 # --- Metadata Helpers ---
 def read_id3_v2(file_path):
-    """Basic ID3v2 tag parser for Title, Artist, and Comment."""
+    """Basic ID3v2 tag parser for Title, Artist, Comment and Transcript."""
     tags = {}
     try:
         with open(file_path, 'rb') as f:
@@ -45,7 +46,7 @@ def read_id3_v2(file_path):
                     frame_size = struct.unpack('>I', tag_data[i+4:i+8])[0]
                 
                 content = tag_data[i+10:i+10+frame_size]
-                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TXXX', 'TPOS', 'TRCK']:
+                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TXXX', 'TPOS', 'TRCK', 'USLT']:
                     # First byte is encoding (0=ISO-8859-1, 1=UTF-16, 2=UTF-16BE, 3=UTF-8)
                     if not content:
                         i += 10 + frame_size
@@ -60,8 +61,8 @@ def read_id3_v2(file_path):
                         elif encoding == 3: text = text_data.decode('utf-8', errors='ignore')
                         else: text = text_data.decode('ascii', errors='ignore')
                         
-                        # COMM frames have a language (3 bytes) and short description before the actual text
-                        if frame_id == 'COMM':
+                        # COMM and USLT frames have a language (3 bytes) and short description before the actual text
+                        if frame_id in ['COMM', 'USLT']:
                             parts = text.split('\x00', 1)
                             text = parts[-1] if len(parts) > 1 else text[3:]
                         
@@ -81,6 +82,8 @@ def read_id3_v2(file_path):
                         # Map COMM or TXXX comment to a internal key
                         key = 'COMM' if frame_id in ['COMM', 'TXXX'] else frame_id
                         tags[key] = clean_text
+                        if frame_id == 'USLT':
+                            tags['USLT'] = clean_text
                     except Exception:
                         pass
                 
@@ -155,12 +158,36 @@ def clean_title(filename):
     name = os.path.splitext(filename)[0]
     return name.replace("-", " ").replace("_", " ").title()
 
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9]+', '-', text)
+    return text.strip('-')
+
+def format_transcript_html(transcript):
+    if not transcript:
+        return "<p>No transcript available for this episode.</p>"
+    
+    html = []
+    for line in transcript.split('\n'):
+        line = line.strip()
+        if not line: continue
+        
+        # Check for speaker identifiers like "Speaker Name:"
+        if ':' in line and len(line.split(':', 1)[0]) < 30:
+            speaker, text = line.split(':', 1)
+            html.append(f'<p><strong>{escape(speaker)}:</strong> {escape(text.strip())}</p>')
+        else:
+            html.append(f'<p>{escape(line)}</p>')
+    return '\n'.join(html)
+
 # --- Main Logic ---
 def generate():
     episodes = []
     audio_files = glob.glob(os.path.join(AUDIO_DIR, "*.mp3"))
     
     audio_files.sort(key=os.path.getmtime, reverse=True)
+
+    os.makedirs('episodes', exist_ok=True)
 
     for file_path in audio_files:
         filename = os.path.basename(file_path)
@@ -169,6 +196,7 @@ def generate():
         title = id3.get('TIT2') or clean_title(filename)
         author = id3.get('TPE1') or PODCAST_AUTHOR
         description = id3.get('COMM') or f"{title} episode."
+        transcript = id3.get('USLT', "")
         season = id3.get('TPOS')
         episode_num = id3.get('TRCK')
         
@@ -179,10 +207,13 @@ def generate():
         pub_date_rss = dt.strftime('%a, %d %b %Y %H:%M:%S +0000')
         pub_date_human = dt.strftime('%B %d, %Y')
         
+        slug = slugify(title)
+        
         episodes.append({
             'title': title,
             'author': author,
             'description': description,
+            'transcript': transcript,
             'season': season,
             'episode_num': episode_num,
             'filename': filename,
@@ -192,20 +223,15 @@ def generate():
             'pub_date_rss': pub_date_rss,
             'pub_date_human': pub_date_human,
             'date': dt,
-            'url': f"audio/{filename}"
+            'url': f"audio/{filename}",
+            'slug': slug,
+            'page_url': f"episodes/{slug}.html"
         })
 
     # --- Sort Episodes (Newest First) ---
     episodes.sort(key=lambda x: x['date'], reverse=True)
 
-    # --- Generate index.html ---
-    html_template = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{PODCAST_NAME}</title>
-    <style>
+    common_styles = f"""
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f1f5f9; line-height: 1.6; margin: 0; padding: 0; }}
         header {{ 
             position: relative;
@@ -246,24 +272,50 @@ def generate():
         .episode {{ background: #1e293b; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #334155; transition: transform 0.2s; }}
         .episode:hover {{ transform: translateY(-4px); border-color: #38bdf8; }}
         .episode h2 {{ margin-top: 0; color: #f8fafc; font-size: 1.5rem; }}
+        .episode h2 a {{ color: inherit; text-decoration: none; }}
+        .episode h2 a:hover {{ color: #38bdf8; }}
         .meta {{ font-size: 0.875rem; color: #38bdf8; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }}
         .description {{ margin-top: 1rem; color: #cbd5e1; font-size: 1rem; }}
         audio {{ width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }}
         footer {{ text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }}
-        .rss-link {{ display: inline-flex; align-items: center; gap: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 1rem; transition: all 0.2s; }}
+        .rss-link, .btn {{ display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 1rem; transition: all 0.2s; background: transparent; cursor: pointer; }}
         .rss-link img {{ height: 24px; width: auto; border-radius: 1rem; }}
-        .rss-link:hover {{ background: #38bdf8; color: #0f172a; }}
-    </style>
-</head>
-<body>
+        .rss-link:hover, .btn:hover {{ background: #38bdf8; color: #0f172a; }}
+        
+        /* Table Styles */
+        table {{ width: 100%; border-collapse: collapse; margin-top: 2rem; background: #1e293b; border-radius: 1rem; overflow: hidden; border: 1px solid #334155; }}
+        th, td {{ padding: 1rem; text-align: left; border-bottom: 1px solid #334155; }}
+        th {{ background: #334155; color: #38bdf8; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; }}
+        tr:last-child td {{ border-bottom: none; }}
+        tr:hover td {{ background: #334155; }}
+        td a {{ color: #38bdf8; text-decoration: none; font-weight: 600; }}
+        td a:hover {{ text-decoration: underline; }}
+
+        /* Transcript Styles */
+        .transcript {{ background: #1e293b; border-radius: 1rem; padding: 2rem; margin-top: 2rem; border: 1px solid #334155; }}
+        .transcript h3 {{ margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }}
+        .transcript p {{ margin-bottom: 1rem; color: #cbd5e1; }}
+        .transcript strong {{ color: #f8fafc; }}
+        
+        .back-link {{ display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }}
+        .back-link:hover {{ text-decoration: underline; }}
+    """
+
+    header_html = f"""
     <header>
         <div class="header-bg"></div>
         <img src="{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
     </header>
-    
-    <div class="container">
-        <main>
-            {"".join([f'''
+    """
+
+    footer_html = f"""
+        <footer>
+            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link"><img src="{APPLE_PODCASTS_ICON}" alt="Apple Podcasts Icon">Add to Apple Podcasts</a>
+        </footer>
+    """
+
+    def get_episode_block(ep, is_page=False):
+        return f"""
             <div class="episode">
                 <div class="meta">
                     {ep['pub_date_human']} | {ep['duration_str']}
@@ -271,19 +323,125 @@ def generate():
                     {f" | Episode {ep['episode_num']}" if ep['episode_num'] else ""}
                     | Voices: {ep['author']}
                 </div>
-                <h2>{ep['title']}</h2>
+                <h2>{'<a href="' + ep['page_url'] + '">' if not is_page else ''}{ep['title']}{'</a>' if not is_page else ''}</h2>
                 <div class="description">{ep['description']}</div>
                 <audio controls>
-                    <source src="{ep['url']}" type="audio/mpeg">
+                    <source src="{'../' if is_page else ''}{ep['url']}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
-            ''' for ep in episodes])}
+        """
+
+    # --- Generate individual episode pages ---
+    for ep in episodes:
+        transcript_html = format_transcript_html(ep['transcript'])
+        page_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{ep['title']} - {PODCAST_NAME}</title>
+    <style>
+        {common_styles.replace(LOGO_PATH, '../' + LOGO_PATH)}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <img src="../{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        <main>
+            {get_episode_block(ep, is_page=True)}
+            <div class="transcript">
+                <h3>Transcript</h3>
+                {transcript_html}
+            </div>
+        </main>
+        {footer_html.replace(APPLE_PODCASTS_ICON, '../' + APPLE_PODCASTS_ICON)}
+    </div>
+</body>
+</html>
+"""
+        with open(ep['page_url'], "w") as f:
+            f.write(page_content)
+
+    # --- Generate episodes.html ---
+    table_rows = "".join([f"""
+        <tr>
+            <td><a href="{ep['page_url']}">{ep['title']}</a></td>
+            <td>{ep['duration_str']}</td>
+            <td>{ep['author']}</td>
+            <td>{ep['pub_date_human']}</td>
+        </tr>
+    """ for ep in episodes])
+
+    episodes_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Episodes - {PODCAST_NAME}</title>
+    <style>
+        {common_styles}
+    </style>
+</head>
+<body>
+    {header_html}
+    
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <main>
+            <h1>All Episodes</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Duration</th>
+                        <th>Voices</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {table_rows}
+                </tbody>
+            </table>
+        </main>
+        {footer_html}
+    </div>
+</body>
+</html>
+"""
+    with open("episodes.html", "w") as f:
+        f.write(episodes_html)
+
+    # --- Generate index.html ---
+    recent_episodes = episodes[:5]
+    html_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{PODCAST_NAME}</title>
+    <style>
+        {common_styles}
+    </style>
+</head>
+<body>
+    {header_html}
+    
+    <div class="container">
+        <main>
+            {"".join([get_episode_block(ep) for ep in recent_episodes])}
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="episodes.html" class="btn">View All Episodes</a>
+            </div>
         </main>
 
-        <footer>
-            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link"><img src="{APPLE_PODCASTS_ICON}" alt="Apple Podcasts Icon">Add to Apple Podcasts</a>
-        </footer>
+        {footer_html}
     </div>
 </body>
 </html>
