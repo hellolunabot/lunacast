@@ -219,6 +219,23 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')
 
+def parse_srt(srt_text):
+    """Strip SRT indices and timestamps to get clean dialogue text."""
+    lines = srt_text.splitlines()
+    text_lines = []
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Skip numeric index lines
+        if line.isdigit():
+            continue
+        # Skip timestamp lines (00:00:00,000 --> 00:00:03,000)
+        if '-->' in line:
+            continue
+        text_lines.append(line)
+    return '\n'.join(text_lines)
+
 def format_transcript_html(transcript):
     if not transcript:
         return "<p>No transcript available for this episode.</p>"
@@ -252,7 +269,19 @@ def generate():
         title = id3.get('TIT2') or clean_title(filename)
         author = id3.get('TPE1') or PODCAST_AUTHOR
         description = id3.get('COMM') or f"{title} episode."
+        
+        # Priority: .srt file, then USLT tag
         transcript = id3.get('USLT', "")
+        srt_file_path = os.path.splitext(file_path)[0] + '.srt'
+        srt_url = None
+        if os.path.exists(srt_file_path):
+            srt_url = f"audio/{os.path.basename(srt_file_path)}"
+            try:
+                with open(srt_file_path, 'r', encoding='utf-8') as sf:
+                    transcript = parse_srt(sf.read())
+            except Exception:
+                pass
+
         season = id3.get('TPOS')
         episode_num = id3.get('TRCK')
         
@@ -270,6 +299,7 @@ def generate():
             'author': author,
             'description': description,
             'transcript': transcript,
+            'srt_url': srt_url,
             'season': season,
             'episode_num': episode_num,
             'filename': filename,
@@ -565,6 +595,7 @@ def generate():
         itunes_tags = ""
         if ep['season']: itunes_tags += f"<itunes:season>{ep['season']}</itunes:season>"
         if ep['episode_num']: itunes_tags += f"<itunes:episode>{ep['episode_num']}</itunes:episode>"
+        if ep['srt_url']: itunes_tags += f'\n            <podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/srt"/>'
         
         # Escape characters for XML
         e_title = escape(ep['title'])
@@ -588,7 +619,8 @@ def generate():
     rss_template = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
-    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
         <title>{escape(PODCAST_NAME)}</title>
         <link>{PODCAST_LINK}</link>
