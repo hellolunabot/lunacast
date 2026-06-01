@@ -19,6 +19,17 @@
         <itunes:explicit>no</itunes:explicit>
         
         <item>
+            <title>The Big Hums: When the Future Runs Out of Breath</title>
+            <itunes:author>lola_midnight, alistair_thorne</itunes:author>
+            <description>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</description>
+            <pubDate>Mon, 01 Jun 2026 04:59:46 +0000</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-big-hums-when-the-future-runs-out-of-breath.mp3" length="4515817" type="audio/mpeg"/>
+            <itunes:duration>281</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">the-big-hums-when-the-future-runs-out-of-breath.mp3</guid>
+            
+        </item>
+        <item>
             <title>More Than Magic: When AI Met the Real World</title>
             <itunes:author>lola_midnight, alistair_thorne</itunes:author>
             <description>A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</description>
