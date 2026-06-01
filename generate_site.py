@@ -426,8 +426,7 @@ def generate():
     header_html = f"""
     <header>
         <div class="header-bg"></div>
-        <img src="{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
-        <div class="tagline">{PODCAST_DESCRIPTION}</div>
+        <img src="{{LOGO_PATH}}" alt="{{PODCAST_NAME}} Logo" class="logo">
     </header>
     """
 
