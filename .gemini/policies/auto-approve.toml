@@ -1,0 +1,10 @@
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = [
+  "git", "grep", "find", "bash", "python", "python3",
+  "ls", "cat", "head", "tail", "tree",
+  "mkdir", "rm", "cp", "mv", "touch",
+  "awk", "sed", "jq"
+]
+decision = "allow"
+priority = 100
