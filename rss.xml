@@ -6,6 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
+        <lastBuildDate>Mon, 01 Jun 2026 20:09:42 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -33,7 +34,7 @@
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">beyond-the-backyard-115-hours-for-a-horsehead.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
-            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.vtt" type="text/vtt" language="en" rel="captions"/>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.vtt?v=1780344582" type="text/vtt" language="en" rel="captions"/>
         </item>
         <item>
             <title>The Big Hums: When the Future Runs Out of Breath</title>
