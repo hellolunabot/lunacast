@@ -659,7 +659,7 @@ def generate():
         </itunes:owner>
         <itunes:image href="{PODCAST_LINK}{THUMBNAIL_PATH}"/>
         <itunes:category text="Technology"/>
-        <itunes:explicit>no</itunes:explicit>
+        <itunes:explicit>false</itunes:explicit>
         {"".join(rss_items)}
     </channel>
 </rss>

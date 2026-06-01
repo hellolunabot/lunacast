@@ -16,7 +16,7 @@
         </itunes:owner>
         <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
         <itunes:category text="Technology"/>
-        <itunes:explicit>no</itunes:explicit>
+        <itunes:explicit>false</itunes:explicit>
         
         <item>
             <title>Beyond the Backyard: 115 Hours for a Horsehead</title>
