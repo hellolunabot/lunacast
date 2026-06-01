@@ -64,17 +64,72 @@ def read_id3_v2(file_path):
                         
                         # COMM and USLT frames have a language (3 bytes) and short description before the actual text
                         if frame_id in ['COMM', 'USLT']:
-                            parts = text.split('\x00', 1)
-                            text = parts[-1] if len(parts) > 1 else text[3:]
+                            # The language is always 3 bytes of ISO-8859-1
+                            lang = text_data[:3].decode('ascii', errors='ignore')
+                            rest = text_data[3:]
+                            
+                            # Find the terminator for the description
+                            if encoding in [1, 2]: # UTF-16
+                                # Look for \x00\x00 terminator
+                                term_idx = -1
+                                for j in range(0, len(rest) - 1, 2):
+                                    if rest[j] == 0 and rest[j+1] == 0:
+                                        term_idx = j
+                                        break
+                                if term_idx != -1:
+                                    # Skip the description and the \x00\x00 terminator
+                                    text_data = rest[term_idx+2:]
+                                else:
+                                    text_data = rest
+                            else: # ISO-8859-1 or UTF-8
+                                if b'\x00' in rest:
+                                    text_data = rest.split(b'\x00', 1)[1]
+                                else:
+                                    text_data = rest
+                                    
+                            # Re-decode the actual text content
+                            if encoding == 0: text = text_data.decode('iso-8859-1', errors='ignore')
+                            elif encoding == 1: text = text_data.decode('utf-16', errors='ignore')
+                            elif encoding == 2: text = text_data.decode('utf-16-be', errors='ignore')
+                            elif encoding == 3: text = text_data.decode('utf-8', errors='ignore')
+                            else: text = text_data.decode('ascii', errors='ignore')
                         
                         # TXXX frames have a description before the actual text
                         if frame_id == 'TXXX':
-                            parts = text.split('\x00', 1)
-                            if len(parts) > 1 and parts[0].lower() == 'comment':
-                                text = parts[1]
+                            if encoding in [1, 2]: # UTF-16
+                                term_idx = -1
+                                for j in range(0, len(text_data) - 1, 2):
+                                    if text_data[j] == 0 and text_data[j+1] == 0:
+                                        term_idx = j
+                                        break
+                                if term_idx != -1:
+                                    desc_data = text_data[:term_idx]
+                                    val_data = text_data[term_idx+2:]
+                                    
+                                    if encoding == 1: desc = desc_data.decode('utf-16', errors='ignore')
+                                    else: desc = desc_data.decode('utf-16-be', errors='ignore')
+                                    
+                                    if desc.lower() == 'comment':
+                                        if encoding == 1: text = val_data.decode('utf-16', errors='ignore')
+                                        else: text = val_data.decode('utf-16-be', errors='ignore')
+                                    else:
+                                        i += 10 + frame_size
+                                        continue
+                                else:
+                                    i += 10 + frame_size
+                                    continue
                             else:
-                                i += 10 + frame_size
-                                continue
+                                if b'\x00' in text_data:
+                                    parts = text_data.split(b'\x00', 1)
+                                    desc = parts[0].decode('iso-8859-1' if encoding == 0 else 'utf-8', errors='ignore')
+                                    if desc.lower() == 'comment':
+                                        text = parts[1].decode('iso-8859-1' if encoding == 0 else 'utf-8', errors='ignore')
+                                    else:
+                                        i += 10 + frame_size
+                                        continue
+                                else:
+                                    i += 10 + frame_size
+                                    continue
 
                         clean_text = text.strip('\x00').strip()
                         if frame_id in ['TPOS', 'TRCK'] and '/' in clean_text:
