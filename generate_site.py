@@ -290,12 +290,25 @@ def generate():
         author = id3.get('TPE1') or PODCAST_AUTHOR
         description = id3.get('COMM') or f"{title} episode."
         
-        # Priority: .srt file, then USLT tag
+        # Priority: .vtt file, then .srt file, then USLT tag
         transcript = id3.get('USLT', "")
+        vtt_file_path = os.path.splitext(file_path)[0] + '.vtt'
         srt_file_path = os.path.splitext(file_path)[0] + '.srt'
-        srt_url = None
-        if os.path.exists(srt_file_path):
-            srt_url = f"audio/{os.path.basename(srt_file_path)}"
+        transcript_url = None
+        transcript_type = None
+
+        if os.path.exists(vtt_file_path):
+            transcript_url = f"audio/{os.path.basename(vtt_file_path)}"
+            transcript_type = "text/vtt"
+            try:
+                with open(vtt_file_path, 'r', encoding='utf-8') as vf:
+                    # For website, we can use the same parse_srt as it handles the format similarly
+                    transcript = parse_srt(vf.read())
+            except Exception:
+                pass
+        elif os.path.exists(srt_file_path):
+            transcript_url = f"audio/{os.path.basename(srt_file_path)}"
+            transcript_type = "application/x-subrip"
             try:
                 with open(srt_file_path, 'r', encoding='utf-8') as sf:
                     transcript = parse_srt(sf.read())
@@ -319,7 +332,8 @@ def generate():
             'author': author,
             'description': description,
             'transcript': transcript,
-            'srt_url': srt_url,
+            'transcript_url': transcript_url,
+            'transcript_type': transcript_type,
             'season': season,
             'episode_num': episode_num,
             'filename': filename,
@@ -616,7 +630,8 @@ def generate():
         extra_tags = []
         if ep['season']: extra_tags.append(f"<itunes:season>{ep['season']}</itunes:season>")
         if ep['episode_num']: extra_tags.append(f"<itunes:episode>{ep['episode_num']}</itunes:episode>")
-        if ep['srt_url']: extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["srt_url"]}" type="application/x-subrip" language="en"/>')
+        if ep['transcript_url']: 
+            extra_tags.append(f'<podcast:transcript url="{PODCAST_LINK}{ep["transcript_url"]}" type="{ep["transcript_type"]}" language="en" rel="captions"/>')
         
         itunes_tags = "\n            ".join(extra_tags)
         if itunes_tags:
