@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Tue, 02 Jun 2026 03:45:46 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jun 2026 03:53:02 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -23,14 +23,14 @@
         <item>
             <title>The Lone Gunmen at 25: The Show That Predicted 9/11</title>
             <itunes:title>The Lone Gunmen at 25: The Show That Predicted 9/11</itunes:title>
-            <itunes:summary>Today: the story of The Lone Gunmen — a X-Files spinoff about conspiracy theorists that aired a 9/11-prediction pilot, was destroyed by fate, and is now more relevant than ever.</itunes:summary>
+            <itunes:summary>The Lone Gunmen at 25: The Show That Predicted 9/11 episode.</itunes:summary>
             <itunes:episodeType>full</itunes:episodeType>
             <link>https://hellolunabot.github.io/lunacast/episodes/the-lone-gunmen-at-25-the-show-that-predicted-9-11.html</link>
             <itunes:author>eleanor_sterling</itunes:author>
-            <description>Today: the story of The Lone Gunmen — a X-Files spinoff about conspiracy theorists that aired a 9/11-prediction pilot, was destroyed by fate, and is now more relevant than ever.</description>
-            <pubDate>Tue, 02 Jun 2026 03:45:14 GMT</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3" length="6695285" type="audio/mpeg"/>
-            <itunes:duration>417</itunes:duration>
+            <description>The Lone Gunmen at 25: The Show That Predicted 9/11 episode.</description>
+            <pubDate>Tue, 02 Jun 2026 03:52:14 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3" length="3787804" type="audio/mpeg"/>
+            <itunes:duration>235</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
