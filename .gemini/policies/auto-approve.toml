@@ -4,7 +4,7 @@ commandPrefix = [
   "git", "grep", "find", "bash", "python", "python3",
   "ls", "cat", "head", "tail", "tree",
   "mkdir", "rm", "cp", "mv", "touch",
-  "awk", "sed", "jq"
+  "awk", "sed", "jq", "sips", "which"
 ]
 decision = "allow"
 priority = 100
