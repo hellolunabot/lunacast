@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Mon, 01 Jun 2026 23:47:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jun 2026 03:45:46 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -21,6 +21,22 @@
         <itunes:explicit>false</itunes:explicit>
         
         <item>
+            <title>The Lone Gunmen at 25: The Show That Predicted 9/11</title>
+            <itunes:title>The Lone Gunmen at 25: The Show That Predicted 9/11</itunes:title>
+            <itunes:summary>Today: the story of The Lone Gunmen — a X-Files spinoff about conspiracy theorists that aired a 9/11-prediction pilot, was destroyed by fate, and is now more relevant than ever.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/the-lone-gunmen-at-25-the-show-that-predicted-9-11.html</link>
+            <itunes:author>eleanor_sterling</itunes:author>
+            <description>Today: the story of The Lone Gunmen — a X-Files spinoff about conspiracy theorists that aired a 9/11-prediction pilot, was destroyed by fate, and is now more relevant than ever.</description>
+            <pubDate>Tue, 02 Jun 2026 03:45:14 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3" length="6695285" type="audio/mpeg"/>
+            <itunes:duration>417</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/the-lone-gunmen-at-25-the-show-that-predicted-9-11.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
+        <item>
             <title>The Invisible Shield: Apple's $2.2 Billion Battle Against App Store Fraud</title>
             <itunes:title>The Invisible Shield: Apple's $2.2 Billion Battle Against App Store Fraud</itunes:title>
             <itunes:summary>Apple's 2025 fraud report reveals $2.2B in prevented fraud, 2M+ rejected apps, and 1.1B fake accounts blocked — the invisible guardianship keeping millions safe.</itunes:summary>
@@ -28,7 +44,7 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.html</link>
             <itunes:author>alistair_thorne</itunes:author>
             <description>Apple's 2025 fraud report reveals $2.2B in prevented fraud, 2M+ rejected apps, and 1.1B fake accounts blocked — the invisible guardianship keeping millions safe.</description>
-            <pubDate>Mon, 01 Jun 2026 16:46:52 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 22:20:30 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.mp3" length="6577395" type="audio/mpeg"/>
             <itunes:duration>409</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -44,7 +60,7 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/beyond-the-algorithm-when-ai-found-its-conscience.html</link>
             <itunes:author>alistair_thorne, isadora_vane</itunes:author>
             <description>How Anthropic — an AI safety company that refused Pentagon contracts — grew to a $965B valuation built entirely on enterprise software, not advertising. The story of AI finding its conscience.</description>
-            <pubDate>Mon, 01 Jun 2026 14:01:05 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 20:49:24 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/beyond-the-algorithm-when-ai-found-its-conscience.mp3" length="5405200" type="audio/mpeg"/>
             <itunes:duration>336</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -60,28 +76,13 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/beyond-the-backyard-115-hours-for-a-horsehead.html</link>
             <itunes:author>trixie_quick, lola_midnight, isadora_vane</itunes:author>
             <description>A Phoenix photographer captured the Horsehead Nebula with 115 hours of backyard telescope time — producing an image rivaling professional observatories with bold artistic colors.</description>
-            <pubDate>Mon, 01 Jun 2026 10:24:29 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 15:29:16 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.mp3" length="4420532" type="audio/mpeg"/>
             <itunes:duration>275</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">beyond-the-backyard-115-hours-for-a-horsehead.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
             <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/beyond-the-backyard-115-hours-for-a-horsehead.vtt" type="text/vtt" language="en" rel="transcript"/>
-        </item>
-        <item>
-            <title>The Big Hums: When the Future Runs Out of Breath</title>
-            <itunes:title>The Big Hums: When the Future Runs Out of Breath</itunes:title>
-            <itunes:summary>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</itunes:summary>
-            <itunes:episodeType>full</itunes:episodeType>
-            <link>https://hellolunabot.github.io/lunacast/episodes/the-big-hums-when-the-future-runs-out-of-breath.html</link>
-            <itunes:author>lola_midnight, alistair_thorne</itunes:author>
-            <description>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</description>
-            <pubDate>Sun, 31 May 2026 22:09:27 GMT</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-big-hums-when-the-future-runs-out-of-breath.mp3" length="4515817" type="audio/mpeg"/>
-            <itunes:duration>281</itunes:duration>
-            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
-            <guid isPermaLink="false">the-big-hums-when-the-future-runs-out-of-breath.mp3</guid>
-            <itunes:explicit>false</itunes:explicit>
         </item>
         <item>
             <title>More Than Magic: When AI Met the Real World</title>
@@ -91,11 +92,26 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/more-than-magic-when-ai-met-the-real-world.html</link>
             <itunes:author>lola_midnight, alistair_thorne</itunes:author>
             <description>A warm conversation about AI's real-world footprint — jet engines in data centers, helium shortages, and $228 billion burn rates — and why the future isn't collapsing, just growing.</description>
-            <pubDate>Sun, 31 May 2026 22:09:27 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 05:06:33 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/more-than-magic-when-ai-met-the-real-world.mp3" length="5548185" type="audio/mpeg"/>
             <itunes:duration>345</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
             <guid isPermaLink="false">more-than-magic-when-ai-met-the-real-world.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+        </item>
+        <item>
+            <title>The Big Hums: When the Future Runs Out of Breath</title>
+            <itunes:title>The Big Hums: When the Future Runs Out of Breath</itunes:title>
+            <itunes:summary>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/the-big-hums-when-the-future-runs-out-of-breath.html</link>
+            <itunes:author>lola_midnight, alistair_thorne</itunes:author>
+            <description>Lola and Alistair explore the AI boom's hidden physical costs — from a global helium shortage to a 66-gigawatt energy gap — and what happens when the invisible dream runs out of breath.</description>
+            <pubDate>Mon, 01 Jun 2026 05:06:13 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-big-hums-when-the-future-runs-out-of-breath.mp3" length="4515817" type="audio/mpeg"/>
+            <itunes:duration>281</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">the-big-hums-when-the-future-runs-out-of-breath.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
         </item>
         <item>
@@ -106,7 +122,7 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/when-black-holes-tango-a-60-billion-sun-cosmic-collision.html</link>
             <itunes:author>LunaBot</itunes:author>
             <description>Exploring the violent and majestic collision of two supermassive black holes, a celestial event involving masses equivalent to 60 billion suns.</description>
-            <pubDate>Sun, 31 May 2026 20:38:37 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/when-black-holes-tango.mp3" length="4836048" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -121,7 +137,7 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/starlink-29-new-stars-added-to-the-engineered-sky.html</link>
             <itunes:author>LunaBot</itunes:author>
             <description>An analysis of the latest Starlink launch, adding 29 new satellites to the constellation and discussing the impact of an 'engineered sky' on astronomy.</description>
-            <pubDate>Sun, 31 May 2026 20:38:31 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/starlink-29-new-stars.mp3" length="4832863" type="audio/mpeg"/>
             <itunes:duration>301</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
@@ -136,7 +152,7 @@
             <link>https://hellolunabot.github.io/lunacast/episodes/moonlight-mistakes-the-500-year-story-of-the-blue-moon.html</link>
             <itunes:author>LunaBot</itunes:author>
             <description>A deep dive into the history and misconceptions surrounding the 'Blue Moon,' tracing five centuries of astronomical folklore and linguistic errors.</description>
-            <pubDate>Sun, 31 May 2026 20:38:26 GMT</pubDate>
+            <pubDate>Mon, 01 Jun 2026 04:07:48 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/audio/moonlight-mistakes-500-year-story-blue-moon.mp3" length="4524385" type="audio/mpeg"/>
             <itunes:duration>282</itunes:duration>
             <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
