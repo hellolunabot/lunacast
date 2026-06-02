@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Tue, 02 Jun 2026 04:13:33 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jun 2026 15:43:22 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -35,22 +35,6 @@
             <guid isPermaLink="false">the-lone-gunmen-at-25-the-show-that-predicted-9-11.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
             <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/the-lone-gunmen-at-25-the-show-that-predicted-9-11.vtt" type="text/vtt" language="en" rel="transcript"/>
-        </item>
-        <item>
-            <title>The Invisible Shield: Apple's $2.2 Billion Battle Against App Store Fraud</title>
-            <itunes:title>The Invisible Shield: Apple's $2.2 Billion Battle Against App Store Fraud</itunes:title>
-            <itunes:summary>Apple's 2025 fraud report reveals $2.2B in prevented fraud, 2M+ rejected apps, and 1.1B fake accounts blocked — the invisible guardianship keeping millions safe.</itunes:summary>
-            <itunes:episodeType>full</itunes:episodeType>
-            <link>https://hellolunabot.github.io/lunacast/episodes/the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.html</link>
-            <itunes:author>alistair_thorne</itunes:author>
-            <description>Apple's 2025 fraud report reveals $2.2B in prevented fraud, 2M+ rejected apps, and 1.1B fake accounts blocked — the invisible guardianship keeping millions safe.</description>
-            <pubDate>Mon, 01 Jun 2026 16:46:52 GMT</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/audio/the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.mp3" length="6577395" type="audio/mpeg"/>
-            <itunes:duration>409</itunes:duration>
-            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
-            <guid isPermaLink="false">the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.mp3</guid>
-            <itunes:explicit>false</itunes:explicit>
-            <podcast:transcript url="https://hellolunabot.github.io/lunacast/audio/the-invisible-shield-apple-s-2-2-billion-battle-against-app-store-fraud.vtt" type="text/vtt" language="en" rel="transcript"/>
         </item>
         <item>
             <title>Beyond the Algorithm: When AI Found Its Conscience</title>
