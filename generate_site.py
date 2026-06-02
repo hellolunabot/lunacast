@@ -400,9 +400,10 @@ def generate():
         vtt_file_path = os.path.splitext(file_path)[0] + '.vtt'
         srt_file_path = os.path.splitext(file_path)[0] + '.srt'
         
-        # Automatically convert SRT to VTT if it exists and VTT doesn't
-        if os.path.exists(srt_file_path) and not os.path.exists(vtt_file_path):
-            srt_to_vtt(srt_file_path)
+        # Automatically convert SRT to VTT if it exists and is newer than VTT (or if VTT doesn't exist)
+        if os.path.exists(srt_file_path):
+            if not os.path.exists(vtt_file_path) or os.path.getmtime(srt_file_path) > os.path.getmtime(vtt_file_path):
+                srt_to_vtt(srt_file_path)
 
         transcript_url = None
         transcript_type = None
