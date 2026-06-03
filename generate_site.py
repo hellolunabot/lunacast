@@ -542,6 +542,7 @@ def generate():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{ep['title']} - {PODCAST_NAME}</title>
     <link rel="icon" type="image/png" href="../../{FAVICON_PATH}">
+    <link rel="apple-touch-icon" href="../../{THUMBNAIL_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{ep['title']} - {PODCAST_NAME}">
@@ -581,6 +582,18 @@ def generate():
             let activeLine = null;
 
             if (!audio || lines.length === 0) return;
+
+            // Media Session API for high-quality lock screen metadata
+            if ('mediaSession' in navigator) {{
+                navigator.mediaSession.metadata = new MediaMetadata({{
+                    title: "{ep['title']}",
+                    artist: "{ep['author']}",
+                    album: "{PODCAST_NAME}",
+                    artwork: [
+                        {{ src: "{PODCAST_LINK}{THUMBNAIL_PATH}", sizes: '512x512', type: 'image/jpeg' }}
+                    ]
+                }});
+            }}
 
             audio.addEventListener('timeupdate', () => {{
                 const currentTime = audio.currentTime;
@@ -645,6 +658,7 @@ def generate():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Episodes - {PODCAST_NAME}</title>
     <link rel="icon" type="image/png" href="{FAVICON_PATH}">
+    <link rel="apple-touch-icon" href="{THUMBNAIL_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="All Episodes - {PODCAST_NAME}">
@@ -697,6 +711,7 @@ def generate():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{PODCAST_NAME}</title>
     <link rel="icon" type="image/png" href="{FAVICON_PATH}">
+    <link rel="apple-touch-icon" href="{THUMBNAIL_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{PODCAST_NAME}">

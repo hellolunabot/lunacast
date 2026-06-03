@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beyond the Algorithm: When AI Found Its Conscience - LunaCast</title>
     <link rel="icon" type="image/png" href="../../images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../images/lunacast-thumbnail.jpg">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="Beyond the Algorithm: When AI Found Its Conscience - LunaCast">
@@ -144,6 +145,18 @@
             let activeLine = null;
 
             if (!audio || lines.length === 0) return;
+
+            // Media Session API for high-quality lock screen metadata
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: "Beyond the Algorithm: When AI Found Its Conscience",
+                    artist: "alistair_thorne, isadora_vane",
+                    album: "LunaCast",
+                    artwork: [
+                        { src: "https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg", sizes: '512x512', type: 'image/jpeg' }
+                    ]
+                });
+            }
 
             audio.addEventListener('timeupdate', () => {
                 const currentTime = audio.currentTime;

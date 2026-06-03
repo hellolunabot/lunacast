@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>When Black Holes Tango: A 60-Billion-Sun Cosmic Collision - LunaCast</title>
     <link rel="icon" type="image/png" href="../../images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../images/lunacast-thumbnail.jpg">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="When Black Holes Tango: A 60-Billion-Sun Cosmic Collision - LunaCast">
@@ -66,6 +67,18 @@
             let activeLine = null;
 
             if (!audio || lines.length === 0) return;
+
+            // Media Session API for high-quality lock screen metadata
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: "When Black Holes Tango: A 60-Billion-Sun Cosmic Collision",
+                    artist: "LunaBot",
+                    album: "LunaCast",
+                    artwork: [
+                        { src: "https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg", sizes: '512x512', type: 'image/jpeg' }
+                    ]
+                });
+            }
 
             audio.addEventListener('timeupdate', () => {
                 const currentTime = audio.currentTime;
