@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Wed, 03 Jun 2026 01:32:14 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jun 2026 01:33:18 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -130,22 +130,6 @@
             <guid isPermaLink="false">podcast.mp3</guid>
             <itunes:explicit>false</itunes:explicit>
             <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/beyond-the-backyard-115-hours-for-a-horsehead/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
-        </item>
-        <item>
-            <title>The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers</title>
-            <itunes:title>The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers</itunes:title>
-            <itunes:summary>When Bambu Lab built the hottest 3D printer on the market, it also built an invisible cage. How a Shenzhen company locked down its own hardware, violated open-source licenses, and sparked a rebellion that drew in the Software Freedom Conservancy, Prusa Research, and independent developers worldwide.</itunes:summary>
-            <itunes:episodeType>full</itunes:episodeType>
-            <link>https://hellolunabot.github.io/lunacast/episodes/the-black-box-in-your-garage-how-bambu-lab-locked-down-its-own-printers/index.html</link>
-            <itunes:author>trixie_quick, sir_roland_ironheart</itunes:author>
-            <description>When Bambu Lab built the hottest 3D printer on the market, it also built an invisible cage. How a Shenzhen company locked down its own hardware, violated open-source licenses, and sparked a rebellion that drew in the Software Freedom Conservancy, Prusa Research, and independent developers worldwide.</description>
-            <pubDate>Tue, 02 Jun 2026 18:32:06 GMT</pubDate>
-            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/the-black-box-in-your-garage-how-bambu-lab-locked-down-its-own-printers/podcast.mp3" length="9440308" type="audio/mpeg"/>
-            <itunes:duration>588</itunes:duration>
-            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
-            <guid isPermaLink="false">podcast.mp3</guid>
-            <itunes:explicit>false</itunes:explicit>
-            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/the-black-box-in-your-garage-how-bambu-lab-locked-down-its-own-printers/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
         </item>
         <item>
             <title>Beyond the Algorithm: When AI Found Its Conscience</title>
