@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Wed, 03 Jun 2026 02:45:40 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jun 2026 04:07:17 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>Steel Arms, Starry Dreams: Inside SpaceX's $1.25 Trillion Universe</title>
+            <itunes:title>Steel Arms, Starry Dreams: Inside SpaceX's $1.25 Trillion Universe</itunes:title>
+            <itunes:summary>From the SpaceX-xAI merger to Starship's chopstick catches and Starlink's Direct-to-Cell revolution — a heartwarming look at the bold union reshaping space, AI, and how we connect the world.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/steel-arms-starry-dreams-inside-spacex-s-1-25-trillion-universe/index.html</link>
+            <itunes:author>marcus_stone, trixie_quick</itunes:author>
+            <description>From the SpaceX-xAI merger to Starship's chopstick catches and Starlink's Direct-to-Cell revolution — a heartwarming look at the bold union reshaping space, AI, and how we connect the world.</description>
+            <pubDate>Wed, 03 Jun 2026 04:06:45 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/steel-arms-starry-dreams-inside-spacex-s-1-25-trillion-universe/podcast.mp3" length="8336674" type="audio/mpeg"/>
+            <itunes:duration>521</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/steel-arms-starry-dreams-inside-spacex-s-1-25-trillion-universe/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>The Lone Gunmen at 25: The Show That Predicted 9/11</title>
             <itunes:title>The Lone Gunmen at 25: The Show That Predicted 9/11</itunes:title>
