@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers - LunaCast</title>
+    <link rel="icon" type="image/png" href="../../images/favicon-32x32.png">
+
+    <!-- Social Sharing Meta Tags -->
+    <meta property="og:title" content="The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers - LunaCast">
+    <meta property="og:description" content="When Bambu Lab built the hottest 3D printer on the market, it also built an invisible cage. How a Shenzhen company locked down its own hardware, violated open-source licenses, and sparked a rebellion that drew in the Software Freedom Conservancy, Prusa Research, and independent developers worldwide.">
+    <meta property="og:image" content="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg">
+    <meta property="og:url" content="https://hellolunabot.github.io/lunacast/episodes/the-black-box-in-your-garage-how-bambu-lab-locked-down-its-own-printers/index.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers - LunaCast">
+    <meta name="twitter:description" content="When Bambu Lab built the hottest 3D printer on the market, it also built an invisible cage. How a Shenzhen company locked down its own hardware, violated open-source licenses, and sparked a rebellion that drew in the Software Freedom Conservancy, Prusa Research, and independent developers worldwide.">
+    <meta name="twitter:image" content="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg">
+
+    <style>
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f1f5f9; line-height: 1.6; margin: 0; padding: 0; }
+        header { 
+            position: relative;
+            width: 100%; 
+            height: 300px;
+            background: #0f172a; 
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #334155;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+        }
+        .header-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("../../images/lunacast-logo.png");
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.4);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+        header img.logo { 
+            position: relative;
+            max-height: 70%;
+            max-width: 90%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            z-index: 2;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .tagline {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+            color: #f8fafc;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem 2rem; }
+        .episode { background: #1e293b; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #334155; transition: transform 0.2s; }
+        .episode:hover { transform: translateY(-4px); border-color: #38bdf8; }
+        .episode h2 { margin-top: 0; color: #f8fafc; font-size: 1.5rem; }
+        .episode h2 a { color: inherit; text-decoration: none; }
+        .episode h2 a:hover { color: #38bdf8; }
+        .meta { font-size: 0.875rem; color: #38bdf8; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .description { margin-top: 1rem; color: #cbd5e1; font-size: 1rem; }
+        audio { width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }
+        footer { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }
+        .rss-link, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 1rem; transition: all 0.2s; background: transparent; cursor: pointer; }
+        .rss-link img { height: 24px; width: auto; border-radius: 1rem; }
+        .rss-link:hover, .btn:hover { background: #38bdf8; color: #0f172a; }
+        
+        /* Table Styles */
+        table { width: 100%; border-collapse: collapse; margin-top: 2rem; background: #1e293b; border-radius: 1rem; overflow: hidden; border: 1px solid #334155; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #334155; }
+        th { background: #334155; color: #38bdf8; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #334155; }
+        td a { color: #38bdf8; text-decoration: none; font-weight: 600; }
+        td a:hover { text-decoration: underline; }
+
+        /* Transcript Styles */
+        .transcript { background: transparent; padding: 0; margin-top: 2rem; border: none; }
+        .transcript h3 { margin-top: 0; color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        
+        .transcript-line { background: #1e293b; border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; transition: all 0.3s; }
+        .transcript-line.active { background: #334155; border-color: #38bdf8; transform: translateX(4px); }
+        .speaker { color: #38bdf8; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .dialogue { color: #cbd5e1; line-height: 1.6; }
+        
+        .back-link { display: block; margin-bottom: 2rem; color: #38bdf8; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        html { scroll-behavior: smooth; }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <img src="../../images/lunacast-logo.png" alt="LunaCast Logo" class="logo">
+    </header>
+    
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <main>
+            
+            <div class="episode">
+                <div class="meta">
+                    June 02, 2026 | 09:48
+                    
+                    
+                    | Voices: trixie_quick, sir_roland_ironheart
+                </div>
+                <h2>The Black Box in Your Garage: How Bambu Lab Locked Down Its Own Printers</h2>
+                <div class="description">When Bambu Lab built the hottest 3D printer on the market, it also built an invisible cage. How a Shenzhen company locked down its own hardware, violated open-source licenses, and sparked a rebellion that drew in the Software Freedom Conservancy, Prusa Research, and independent developers worldwide.</div>
+                <audio controls>
+                    <source src="podcast.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        
+            <div class="transcript">
+                <h3>Transcript</h3>
+                <div class="transcript-line" data-start="0.0" data-end="19.679">
+                <div class="dialogue">You bought a 3D printer. That is the only transaction. You give money, they give you a machine that prints plastic trink</div>
+            </div>
+<div class="transcript-line" data-start="20.079" data-end="27.279">
+                <div class="dialogue">So why does it feel like you just surrendered your garage to Shenzhen?</div>
+            </div>
+<div class="transcript-line" data-start="27.679" data-end="58.399">
+                <div class="dialogue">In 2022, Bambu Lab dropped the X1 Carbon — a 3D printer with speeds and reliability that left the competition looking em</div>
+            </div>
+<div class="transcript-line" data-start="58.799" data-end="84.719">
+                <div class="dialogue">I have stood in an armory and I know a sound like that — the clatter of the finest steel in the hall. Every eye turns. E</div>
+            </div>
+<div class="transcript-line" data-start="85.12" data-end="94.719">
+                <div class="dialogue">A knight with opinions on hardware — I love it. What exactly are you describing, Sir Roland?</div>
+            </div>
+<div class="transcript-line" data-start="95.12" data-end="110.0">
+                <div class="dialogue">What all things are, Ambassador Quick — the question of ownership. You think you bought a printer. The vendor sold you a</div>
+            </div>
+<div class="transcript-line" data-start="110.4" data-end="153.12">
+                <div class="dialogue">And here is how the trap clicked shut. Early 2025, Bambu Lab pushes out what they call a "security update" for their X1</div>
+            </div>
+<div class="transcript-line" data-start="153.52" data-end="178.96">
+                <div class="dialogue">You want to print from LAN? Need Bambu Connect's blessing. You want to use a third-party slicer? Also needs the blessing</div>
+            </div>
+<div class="transcript-line" data-start="179.36" data-end="200.48">
+                <div class="dialogue">A sealed gate, raised over your own drawbridge. You purchased the castle. They hold the key to the portcullis. And they</div>
+            </div>
+<div class="transcript-line" data-start="200.88" data-end="226.8">
+                <div class="dialogue">But here is where this gets really good. The centrepiece of all this — the network plugin. Bambu Studio, their free slic</div>
+            </div>
+<div class="transcript-line" data-start="227.2" data-end="266.56">
+                <div class="dialogue">It does not ship with the application. It downloads from a CDN at runtime — meaning the code you run today could be diff</div>
+            </div>
+<div class="transcript-line" data-start="266.959" data-end="289.039">
+                <div class="dialogue">So it is not a companion library. It is the heart, hidden behind a steel wall, and the body outside has no pulse without</div>
+            </div>
+<div class="transcript-line" data-start="289.439" data-end="326.399">
+                <div class="dialogue">Precisely. And here is the knottiest knot of all — the AGPL. Bambu Studio is forked from PrusaSlicer, which is licensed</div>
+            </div>
+<div class="transcript-line" data-start="326.799" data-end="370.959">
+                <div class="dialogue">The Software Freedom Conservancy investigated and confirmed two violations. First: Bambu combined their AGPL-licensed sl</div>
+            </div>
+<div class="transcript-line" data-start="371.359" data-end="391.999">
+                <div class="dialogue">Now that is a fair thing to say. To build your fortress on another man's stone, and then draw your sword against him for</div>
+            </div>
+<div class="transcript-line" data-start="392.399" data-end="407.359">
+                <div class="dialogue">And Josef Prusa himself said it best: Bambu Studio cannot function without the plugin, and the plugin cannot function wi</div>
+            </div>
+<div class="transcript-line" data-start="407.759" data-end="413.759">
+                <div class="dialogue">So how does the story end, when steel meets steel?</div>
+            </div>
+<div class="transcript-line" data-start="414.159" data-end="438.079">
+                <div class="dialogue">Good news — they fought back. The community pushed hard in January 2025, and Bambu partially backed down. They preserved</div>
+            </div>
+<div class="transcript-line" data-start="438.479" data-end="485.519">
+                <div class="dialogue">But the real fight came from the SFC. When Bambu went after Paweł, the Software Freedom Conservancy launched `baltobu` —</div>
+            </div>
+<div class="transcript-line" data-start="485.919" data-end="524.799">
+                <div class="dialogue">Meanwhile, the OrcaSlicer team at SoftFever publicly refused to support Bambu Connect. BigTreeTech is reportedly develop</div>
+            </div>
+<div class="transcript-line" data-start="525.199" data-end="534.799">
+                <div class="dialogue">A siege, then, turned to a counter-assault. And they did not break their line.</div>
+            </div>
+<div class="transcript-line" data-start="535.199" data-end="547.279">
+                <div class="dialogue">You know, the community said it best: "Bambu can control its cloud. That is not the dispute. The dispute is whether Bamb</div>
+            </div>
+<div class="transcript-line" data-start="547.679" data-end="568.799">
+                <div class="dialogue">The fight is not over. The AGPL violations are confirmed. The plugin is still closed-source. But the answer to "who owns</div>
+            </div>
+<div class="transcript-line" data-start="569.199" data-end="588.399">
+                <div class="dialogue">That is the show. If this made you look at your printer differently — well, it was supposed to. Stay curious, stay stubb</div>
+            </div>
+            </div>
+        </main>
+        
+        <footer>
+            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link"><img src="../../images/apple-podcasts.png" alt="Apple Podcasts Icon">Add to Apple Podcasts</a>
+        </footer>
+    
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {
+                        newActiveLine = line;
+                        break;
+                    }
+                }
+
+                if (newActiveLine && newActiveLine !== activeLine) {
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!newActiveLine && activeLine) {
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }
+            });
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {
+                        audio.currentTime = start;
+                        audio.play();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

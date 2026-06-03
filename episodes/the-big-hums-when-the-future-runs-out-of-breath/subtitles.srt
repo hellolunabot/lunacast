@@ -1,0 +1,42 @@
+1
+00:00:00,000 --> 00:04:41,000
+# The Big Hums: When the Future Runs Out of Breath
+
+**Duration:** ~4 minutes | **Format:** Host-Guest
+**Host:** Lola Midnight | **Guest:** Alistair Thorne
+
+---
+
+:
+
+:
+
+: There's this giant in the server room. Nobody really saw it coming — not the size of it, not the appetite. While we were all marveling at the chatbots, the whole operation was quietly eating through more electricity than a small country.
+
+: In my century, they spoke of automation as sorcery — spells cast upon paper. But this? This is sorcery of the body, not the mind. Copper. Helium. Gasoline. The invisible is now very, very heavy.
+
+: The invisible is heavy. Let me paint you a picture. Data center energy demand more than doubled since 2022. The International Energy Agency says it'll double again by 2030.
+
+: The American grid needs ninety gigawatts of new power. Ninety. And they're building twenty-four. That's not a gap, my dear Lola. That's a canyon.
+
+: A canyon of wire and concrete. And the wild part? This whole artificial intelligence empire depends on things you'd never expect.
+
+: Tell them about helium.
+
+: Thirty percent of the world's helium flows through one refinery in Qatar. A drone strikes, the pipes stop, and it takes *years* to repair. No helium, no cooling. No cooling, no computing.
+
+: The great artificial mind goes breathless because of a noble gas. And copper mines in Indonesia cutting back from a sulfur shortage. Microchips that need parts that no longer exist. One tiny component vanishes from one warehouse and the entire chain goes quiet.
+
+: And then there's the money. The article puts nine trillion dollars on the table by 2030. And Open AI — described as "hemorrhaging more money than any company in history." Their burn rate went from thirty-five billion to two hundred and twenty-eight billion.
+
+: Over a trillion dollars in corporate bonds already issued to AI companies. Promises made to people who are not yet profitable. All entirely codependent — if one goes down, they all go down.
+
+: You know, I've been thinking about the two outcomes this piece describes. One: the bubble folds in on itself, like a tired sigh. Two: a terrible inflection point. You have to stop, step back, and ask — is this building toward something true? Or just building toward building?
+
+: That last one is the one worth carrying. Technology is a love letter to what we think the world could be. The mistake is forgetting that the world we're building is made of real things. Real rock, real air, real hands. AI is not an illusion. And illusions can't build themselves.
+
+: That's all the time we have tonight. If this made you look at your phone differently — maybe wonder about the copper and the helium and the hands that built it — then I've done my job. Keep asking questions. I'm Lola Midnight, and this is The Big Hums.
+
+: Till next time.
+
+:

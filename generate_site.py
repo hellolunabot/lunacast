@@ -15,7 +15,7 @@ LOGO_PATH = "images/lunacast-logo.png"
 THUMBNAIL_PATH = "images/lunacast-thumbnail.jpg"
 FAVICON_PATH = "images/favicon-32x32.png"
 APPLE_PODCASTS_ICON = "images/apple-podcasts.png"
-AUDIO_DIR = "audio"
+AUDIO_DIR = "episodes"
 
 # --- Metadata Helpers ---
 def read_id3_v2(file_path):
@@ -381,24 +381,31 @@ def format_transcript_html(transcript_blocks, author_list=""):
 # --- Main Logic ---
 def generate():
     episodes = []
-    audio_files = glob.glob(os.path.join(AUDIO_DIR, "*.mp3"))
     
-    audio_files.sort(key=os.path.getmtime, reverse=True)
+    # Iterate through subdirectories in AUDIO_DIR (episodes/)
+    if not os.path.exists(AUDIO_DIR):
+        print(f"Error: {AUDIO_DIR} directory not found.")
+        return
 
-    os.makedirs('episodes', exist_ok=True)
-
-    for file_path in audio_files:
-        filename = os.path.basename(file_path)
-        id3 = read_id3_v2(file_path)
+    episode_dirs = [d for d in os.listdir(AUDIO_DIR) if os.path.isdir(os.path.join(AUDIO_DIR, d))]
+    
+    for slug in episode_dirs:
+        ep_dir = os.path.join(AUDIO_DIR, slug)
+        mp3_path = os.path.join(ep_dir, "podcast.mp3")
         
-        title = id3.get('TIT2') or clean_title(filename)
+        if not os.path.exists(mp3_path):
+            continue
+            
+        id3 = read_id3_v2(mp3_path)
+        
+        title = id3.get('TIT2') or clean_title(slug)
         author = id3.get('TPE1') or PODCAST_AUTHOR
         description = id3.get('COMM') or f"{title} episode."
         
-        # Priority: .vtt file, then .srt file, then USLT tag
-        transcript = id3.get('USLT', "")
-        vtt_file_path = os.path.splitext(file_path)[0] + '.vtt'
-        srt_file_path = os.path.splitext(file_path)[0] + '.srt'
+        # Priority: subtitles.vtt, then subtitles.srt
+        transcript = ""
+        vtt_file_path = os.path.join(ep_dir, 'subtitles.vtt')
+        srt_file_path = os.path.join(ep_dir, 'subtitles.srt')
         
         # Automatically convert SRT to VTT if it exists and is newer than VTT (or if VTT doesn't exist)
         if os.path.exists(srt_file_path):
@@ -409,7 +416,7 @@ def generate():
         transcript_type = None
 
         if os.path.exists(vtt_file_path):
-            transcript_url = f"audio/{os.path.basename(vtt_file_path)}"
+            transcript_url = f"{AUDIO_DIR}/{slug}/subtitles.vtt"
             transcript_type = "text/vtt"
             try:
                 with open(vtt_file_path, 'r', encoding='utf-8') as vf:
@@ -417,7 +424,7 @@ def generate():
             except Exception:
                 pass
         elif os.path.exists(srt_file_path):
-            transcript_url = f"audio/{os.path.basename(srt_file_path)}"
+            transcript_url = f"{AUDIO_DIR}/{slug}/subtitles.srt"
             transcript_type = "application/x-subrip"
             try:
                 with open(srt_file_path, 'r', encoding='utf-8') as sf:
@@ -428,14 +435,12 @@ def generate():
         season = id3.get('TPOS')
         episode_num = id3.get('TRCK')
         
-        duration_sec = get_mp3_duration(file_path)
+        duration_sec = get_mp3_duration(mp3_path)
         duration_str = format_duration(duration_sec)
-        file_size = os.path.getsize(file_path)
-        dt = datetime.datetime.fromtimestamp(os.path.getmtime(file_path))
+        file_size = os.path.getsize(mp3_path)
+        dt = datetime.datetime.fromtimestamp(os.path.getmtime(mp3_path))
         pub_date_rss = dt.strftime('%a, %d %b %Y %H:%M:%S +0000')
         pub_date_human = dt.strftime('%B %d, %Y')
-        
-        slug = slugify(title)
         
         episodes.append({
             'title': title,
@@ -446,16 +451,16 @@ def generate():
             'transcript_type': transcript_type,
             'season': season,
             'episode_num': episode_num,
-            'filename': filename,
+            'filename': "podcast.mp3",
             'duration_sec': duration_sec,
             'duration_str': duration_str,
             'file_size': file_size,
             'pub_date_rss': pub_date_rss,
             'pub_date_human': pub_date_human,
             'date': dt,
-            'url': f"audio/{filename}",
+            'url': f"{AUDIO_DIR}/{slug}/podcast.mp3",
             'slug': slug,
-            'page_url': f"episodes/{slug}.html"
+            'page_url': f"{AUDIO_DIR}/{slug}/index.html"
         })
 
     # --- Sort Episodes (Newest First) ---
@@ -574,7 +579,7 @@ def generate():
                 <h2>{'<a href="' + ep['page_url'] + '">' if not is_page else ''}{ep['title']}{'</a>' if not is_page else ''}</h2>
                 <div class="description">{ep['description']}</div>
                 <audio controls>
-                    <source src="{'../' if is_page else ''}{ep['url']}" type="audio/mpeg">
+                    <source src="{'podcast.mp3' if is_page else ep['url']}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -589,7 +594,7 @@ def generate():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{ep['title']} - {PODCAST_NAME}</title>
-    <link rel="icon" type="image/png" href="../{FAVICON_PATH}">
+    <link rel="icon" type="image/png" href="../../{FAVICON_PATH}">
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{ep['title']} - {PODCAST_NAME}">
@@ -603,17 +608,17 @@ def generate():
     <meta name="twitter:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
 
     <style>
-        {common_styles.replace(LOGO_PATH, '../' + LOGO_PATH)}
+        {common_styles.replace(LOGO_PATH, '../../' + LOGO_PATH)}
     </style>
 </head>
 <body>
     <header>
         <div class="header-bg"></div>
-        <img src="../{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
+        <img src="../../{LOGO_PATH}" alt="{PODCAST_NAME} Logo" class="logo">
     </header>
     
     <div class="container">
-        <a href="../index.html" class="back-link">← Back to Home</a>
+        <a href="../../index.html" class="back-link">← Back to Home</a>
         <main>
             {get_episode_block(ep, is_page=True)}
             <div class="transcript">
@@ -621,7 +626,7 @@ def generate():
                 {transcript_html}
             </div>
         </main>
-        {footer_html.replace(APPLE_PODCASTS_ICON, '../' + APPLE_PODCASTS_ICON)}
+        {footer_html.replace(APPLE_PODCASTS_ICON, '../../' + APPLE_PODCASTS_ICON)}
     </div>
 
     <script>
