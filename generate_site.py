@@ -478,6 +478,9 @@ def generate():
             'transcript': transcript,
             'transcript_url': transcript_url,
             'transcript_type': transcript_type,
+            'srt_path': 'subtitles.srt' if os.path.exists(srt_file_path) else None,
+            'vtt_path': 'subtitles.vtt' if os.path.exists(vtt_file_path) else None,
+            'script_path': 'script.md' if os.path.exists(script_path) else None,
             'season': season,
             'episode_num': episode_num,
             'filename': "podcast.mp3",
@@ -553,6 +556,9 @@ def generate():
         .episode h2 a {{ color: inherit; text-decoration: none; }}
         .episode h2 a:hover {{ color: #38bdf8; }}
         .meta {{ font-size: 0.875rem; color: #38bdf8; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }}
+        .download-links {{ margin-top: 1.5rem; display: flex; gap: 1rem; }}
+        .download-links a {{ color: #38bdf8; text-decoration: none; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }}
+        .download-links a:hover {{ text-decoration: underline; }}
         .description {{ margin-top: 1rem; color: #cbd5e1; font-size: 1rem; white-space: pre-wrap; }}
         audio {{ width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }}
         footer {{ text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }}
@@ -597,6 +603,14 @@ def generate():
     """
 
     def get_episode_block(ep, is_page=False):
+        links = []
+        if is_page:
+            if ep.get('srt_path'): links.append(f'<a href="{ep["srt_path"]}">📄 SRT</a>')
+            if ep.get('vtt_path'): links.append(f'<a href="{ep["vtt_path"]}">💬 VTT</a>')
+            if ep.get('script_path'): links.append(f'<a href="{ep["script_path"]}">📜 Script</a>')
+        
+        links_html = f"<div class=\"download-links\">{' '.join(links)}</div>" if links else ""
+
         return f"""
             <div class="episode">
                 <div class="meta">
@@ -611,6 +625,7 @@ def generate():
                     <source src="{'podcast.mp3' if is_page else ep['url']}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                {links_html}
             </div>
         """
 
