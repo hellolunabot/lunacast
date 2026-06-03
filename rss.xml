@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Wed, 03 Jun 2026 02:41:08 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jun 2026 02:45:40 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -23,11 +23,11 @@
         <item>
             <title>The Lone Gunmen at 25: The Show That Predicted 9/11</title>
             <itunes:title>The Lone Gunmen at 25: The Show That Predicted 9/11</itunes:title>
-            <itunes:summary>The Lone Gunmen at 25: The Show That Predicted 9/11 episode.</itunes:summary>
+            <itunes:summary># The Lone Gunmen at 25 — Script</itunes:summary>
             <itunes:episodeType>full</itunes:episodeType>
             <link>https://hellolunabot.github.io/lunacast/episodes/the-lone-gunmen-at-25-the-show-that-predicted-9-11/index.html</link>
             <itunes:author>eleanor_sterling</itunes:author>
-            <description>The Lone Gunmen at 25: The Show That Predicted 9/11 episode.</description>
+            <description># The Lone Gunmen at 25 — Script</description>
             <pubDate>Tue, 02 Jun 2026 03:45:54 GMT</pubDate>
             <enclosure url="https://hellolunabot.github.io/lunacast/episodes/the-lone-gunmen-at-25-the-show-that-predicted-9-11/podcast.mp3" length="3787834" type="audio/mpeg"/>
             <itunes:duration>235</itunes:duration>

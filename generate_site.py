@@ -238,42 +238,29 @@ def timestamp_to_seconds(ts):
 def parse_transcript(text):
     """Parse VTT or SRT into a list of {start, end, text} dictionaries."""
     blocks = []
-    # Split by double newline to get individual blocks
-    raw_blocks = re.split(r'\n\s*\n', text.strip())
+    # Standardize commas to dots for timestamps and remove WEBVTT header
+    text = text.replace('WEBVTT', '').replace(',', '.')
+    pattern = r'(\d{1,2}:\d{2}:\d{2}\.\d{3})\s*-->\s*(\d{1,2}:\d{2}:\d{2}\.\d{3})'
     
-    for block in raw_blocks:
-        lines = block.strip().splitlines()
-        if not lines: continue
-        
-        # Skip "WEBVTT" header
-        if lines[0].strip() == "WEBVTT":
-            lines = lines[1:]
-            if not lines: continue
+    matches = list(re.finditer(pattern, text))
+    for i, match in enumerate(matches):
+        start_str, end_str = match.groups()
+        try:
+            start = timestamp_to_seconds(start_str)
+            end = timestamp_to_seconds(end_str)
             
-        # Check if first line is an index (SRT style)
-        if lines[0].strip().isdigit():
-            lines = lines[1:]
-            if not lines: continue
+            # Content is between this match and the next match (or end of string)
+            start_pos = match.end()
+            end_pos = matches[i+1].start() if i+1 < len(matches) else len(text)
             
-        # Find timestamp line
-        ts_line = None
-        ts_idx = -1
-        for idx, line in enumerate(lines):
-            if '-->' in line:
-                ts_line = line
-                ts_idx = idx
-                break
-        
-        if ts_line:
-            ts_parts = ts_line.split('-->')
-            try:
-                start = timestamp_to_seconds(ts_parts[0].strip())
-                end = timestamp_to_seconds(ts_parts[1].strip())
-                content = " ".join(lines[ts_idx+1:]).strip()
-                if content:
-                    blocks.append({'start': start, 'end': end, 'text': content})
-            except (ValueError, IndexError):
-                continue
+            content = text[start_pos:end_pos].strip()
+            # Remove trailing SRT indices (numbers at the end of the block)
+            content = re.sub(r'\n\s*\d+\s*$', '', content)
+            
+            if content:
+                blocks.append({'start': start, 'end': end, 'text': content})
+        except (ValueError, IndexError):
+            continue
     
     return blocks
 
@@ -401,18 +388,24 @@ def generate():
         title = id3.get('TIT2') or clean_title(slug)
         author = id3.get('TPE1') or PODCAST_AUTHOR
         
-        # Priority: script.md, then COMM tag
-        description = ""
+        # Priority: script.md for full script
+        script_content = ""
         script_path = os.path.join(ep_dir, "script.md")
         if os.path.exists(script_path):
             try:
                 with open(script_path, 'r', encoding='utf-8') as sf:
-                    description = sf.read().strip()
+                    script_content = sf.read().strip()
             except Exception:
                 pass
         
-        if not description:
-            description = id3.get('COMM') or f"{title} episode."
+        # Priority: COMM tag for summary/description
+        summary = id3.get('COMM') or ""
+        if not summary and script_content:
+            # Fallback to first paragraph of script
+            summary = script_content.split('\n\n')[0]
+        
+        if not summary:
+            summary = f"{title} episode."
         
         # Priority: subtitles.vtt, then subtitles.srt
         transcript = ""
@@ -474,7 +467,8 @@ def generate():
         episodes.append({
             'title': title,
             'author': author,
-            'description': description,
+            'summary': summary,
+            'script_content': script_content,
             'transcript': transcript,
             'transcript_url': transcript_url,
             'transcript_type': transcript_type,
@@ -529,7 +523,7 @@ def generate():
                     | Voices: {ep['author']}
                 </div>
                 <h2>{'<a href="' + ep['page_url'] + '">' if not is_page else ''}{ep['title']}{'</a>' if not is_page else ''}</h2>
-                <div class="description">{ep['description']}</div>
+                <div class="description">{ep['summary']}</div>
                 <audio controls>
                     <source src="{'podcast.mp3' if is_page else ep['url']}" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -551,13 +545,13 @@ def generate():
 
     <!-- Social Sharing Meta Tags -->
     <meta property="og:title" content="{ep['title']} - {PODCAST_NAME}">
-    <meta property="og:description" content="{escape(ep['description'], {'"': '&quot;'})}">
+    <meta property="og:description" content="{escape(ep['summary'], {'"': '&quot;'})}">
     <meta property="og:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
     <meta property="og:url" content="{PODCAST_LINK}{ep['page_url']}">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{ep['title']} - {PODCAST_NAME}">
-    <meta name="twitter:description" content="{escape(ep['description'], {'"': '&quot;'})}">
+    <meta name="twitter:description" content="{escape(ep['summary'], {'"': '&quot;'})}">
     <meta name="twitter:image" content="{PODCAST_LINK}{THUMBNAIL_PATH}">
 
     <link rel="stylesheet" href="../../style.css">
@@ -760,7 +754,7 @@ def generate():
         # Escape characters for XML
         e_title = escape(ep['title'])
         e_author = escape(ep['author'])
-        e_description = escape(ep['description'])
+        e_summary = escape(ep['summary'])
         
         # Ensure pubDate uses GMT for maximum RFC 2822 compatibility
         pub_date_rss = ep['date'].strftime('%a, %d %b %Y %H:%M:%S GMT')
@@ -769,11 +763,11 @@ def generate():
         <item>
             <title>{e_title}</title>
             <itunes:title>{e_title}</itunes:title>
-            <itunes:summary>{e_description}</itunes:summary>
+            <itunes:summary>{e_summary}</itunes:summary>
             <itunes:episodeType>full</itunes:episodeType>
             <link>{PODCAST_LINK}{ep['page_url']}</link>
             <itunes:author>{e_author}</itunes:author>
-            <description>{e_description}</description>
+            <description>{e_summary}</description>
             <pubDate>{pub_date_rss}</pubDate>
             <enclosure url="{PODCAST_LINK}{ep['url']}" length="{ep['file_size']}" type="audio/mpeg"/>
             <itunes:duration>{ep['duration_sec']}</itunes:duration>
