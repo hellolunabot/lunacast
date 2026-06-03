@@ -47,7 +47,7 @@ def read_id3_v2(file_path):
                     frame_size = struct.unpack('>I', tag_data[i+4:i+8])[0]
                 
                 content = tag_data[i+10:i+10+frame_size]
-                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TXXX', 'TPOS', 'TRCK', 'USLT']:
+                if frame_id in ['TIT2', 'TPE1', 'COMM', 'TXXX', 'TPOS', 'TRCK', 'USLT', 'TDRC']:
                     # First byte is encoding (0=ISO-8859-1, 1=UTF-16, 2=UTF-16BE, 3=UTF-8)
                     if not content:
                         i += 10 + frame_size
@@ -438,7 +438,24 @@ def generate():
         duration_sec = get_mp3_duration(mp3_path)
         duration_str = format_duration(duration_sec)
         file_size = os.path.getsize(mp3_path)
-        dt = datetime.datetime.fromtimestamp(os.path.getmtime(mp3_path))
+        
+        # Priority: TDRC tag, then file mtime
+        dt = None
+        if id3.get('TDRC'):
+            try:
+                # Handle YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
+                tdrc = id3['TDRC'].split('+')[0].split('Z')[0]
+                if 'T' in tdrc:
+                    dt = datetime.datetime.strptime(tdrc, '%Y-%m-%dT%H:%M:%S')
+                else:
+                    dt = datetime.datetime.strptime(tdrc, '%Y-%m-%d')
+                dt = dt.replace(tzinfo=datetime.timezone.utc)
+            except Exception:
+                pass
+        
+        if not dt:
+            dt = datetime.datetime.fromtimestamp(os.path.getmtime(mp3_path), tz=datetime.timezone.utc)
+
         pub_date_rss = dt.strftime('%a, %d %b %Y %H:%M:%S +0000')
         pub_date_human = dt.strftime('%B %d, %Y')
         
