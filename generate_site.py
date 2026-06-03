@@ -400,7 +400,19 @@ def generate():
         
         title = id3.get('TIT2') or clean_title(slug)
         author = id3.get('TPE1') or PODCAST_AUTHOR
-        description = id3.get('COMM') or f"{title} episode."
+        
+        # Priority: script.md, then COMM tag
+        description = ""
+        script_path = os.path.join(ep_dir, "script.md")
+        if os.path.exists(script_path):
+            try:
+                with open(script_path, 'r', encoding='utf-8') as sf:
+                    description = sf.read().strip()
+            except Exception:
+                pass
+        
+        if not description:
+            description = id3.get('COMM') or f"{title} episode."
         
         # Priority: subtitles.vtt, then subtitles.srt
         transcript = ""
@@ -541,7 +553,7 @@ def generate():
         .episode h2 a {{ color: inherit; text-decoration: none; }}
         .episode h2 a:hover {{ color: #38bdf8; }}
         .meta {{ font-size: 0.875rem; color: #38bdf8; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }}
-        .description {{ margin-top: 1rem; color: #cbd5e1; font-size: 1rem; }}
+        .description {{ margin-top: 1rem; color: #cbd5e1; font-size: 1rem; white-space: pre-wrap; }}
         audio {{ width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; }}
         footer {{ text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; }}
         .rss-link, .btn {{ display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: bold; padding: 0.75rem 1.5rem; border: 2px solid #38bdf8; border-radius: 1rem; transition: all 0.2s; background: transparent; cursor: pointer; }}
