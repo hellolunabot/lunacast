@@ -1,0 +1,17 @@
+[trixie_quick]: Welcome back to the political scoreboard! I'm Trixie, and folks, what a finish in California's governor's race. Democrat Xavier Becerra has stormed past Republican Steve Hilton and is heading to the November general election. Joining me to break down the replay is the one and only Lola. Lola, this was one of the most dramatic come-from-behind races I've ever covered!
+
+[lola_midnight]: It certainly was, darling. A career politician who spent years in the shadows — former attorney general, former Health and Human Services Secretary — suddenly surging to nearly twenty-seven percent of the vote. Becerra ran on experience and his willingness to stand up to President Trump, and California listened. If he wins in November, he becomes the state's first Latino governor in the modern era. Quite the milestone.
+
+[trixie_quick]: Let's talk about that early lead though. Steve Hilton was up big on Tuesday night. We're talking a sizable lead in those early returns. But as the ballots kept coming in, that lead just melted away. It's like watching a comeback win in the final quarter — you never know until the final whistle!
+
+[lola_midnight]: And that brings us to the real story behind the numbers: California's vote counting process has drawn criticism from every corner of the political spectrum. Mail-in ballots arriving days after the election, extensive allowances for corrections, and the sheer size of the electorate — it's a perfect storm for delays. Even Governor Newsom's office publicly wished the count would move faster.
+
+[trixie_quick]: And you couldn't have Trump not weighing in on this one. He's alleging cheating without a shred of evidence, and his appointed U.S. Attorney Bill Essayli has launched investigations, claiming the vote-by-mail system has serious structural vulnerabilities. But here's the stat that matters: UC Berkeley statistics professor Philip Stark says there's no evidence of problems at a scale bigger than a handful of votes. That's it. A handful.
+
+[lola_midnight]: Precisely. The drama is real, but the fraud is not. Meanwhile, the battle for second place is still too close to call. Tom Steyer, the billionaire Democrat, is steadily climbing. As of Friday, Hilton still held a lead of over three hundred thirty thousand votes, but with only sixty-seven percent of ballots counted, millions remain. Steyer could very well surge past him.
+
+[trixie_quick]: So Becerra's November opponent is still a toss-up — Hilton or Steyer. Either way, this general election is shaping up to be a doozy. And mark my words, folks, with a certification deadline of July tenth, we're going to be talking about this race for weeks.
+
+[lola_midnight]: Indeed. A remarkable primary, a contentious count, and a general election that could redefine California's political landscape. Until next time, keep your ballots and your wits about you.
+
+[trixie_quick]: That's the final score for now! I'm Trixie, this has been Lola, and we'll see you at the next tip-off.
