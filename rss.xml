@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Sat, 06 Jun 2026 04:21:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Jun 2026 15:36:07 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>Becerra Takes the Lead: California Governor Race Update</title>
+            <itunes:title>Becerra Takes the Lead: California Governor Race Update</itunes:title>
+            <itunes:summary>Democrat Xavier Becerra overtakes Steve Hilton to advance to California's November gubernatorial general election, amid a controversial slow vote count and bipartisan complaints.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/becerra-takes-the-lead-ca-governor-race/index.html</link>
+            <itunes:author>trixie_quick, lola_midnight</itunes:author>
+            <description>Democrat Xavier Becerra overtakes Steve Hilton to advance to California's November gubernatorial general election, amid a controversial slow vote count and bipartisan complaints.</description>
+            <pubDate>Mon, 08 Jun 2026 15:32:09 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/becerra-takes-the-lead-ca-governor-race/podcast.mp3" length="2378122" type="audio/mpeg"/>
+            <itunes:duration>148</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/becerra-takes-the-lead-ca-governor-race/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>Steel Arms, Starry Dreams: Inside SpaceX's $1.25 Trillion Universe</title>
             <itunes:title>Steel Arms, Starry Dreams: Inside SpaceX's $1.25 Trillion Universe</itunes:title>
