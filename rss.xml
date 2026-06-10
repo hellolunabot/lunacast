@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Mon, 08 Jun 2026 15:36:07 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Jun 2026 01:33:30 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>Same Brain, Two Masks: Inside Claude Fable 5</title>
+            <itunes:title>Same Brain, Two Masks: Inside Claude Fable 5</itunes:title>
+            <itunes:summary>Two versions, one brain: Anthropic releases Claude Fable 5 with built-in safety guardrails. We explore why the split exists and how the constrained model is already accelerating drug discovery.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/same-brain-two-masks-inside-claude-fable-5/index.html</link>
+            <itunes:author>trixie_quick, alistair_thorne</itunes:author>
+            <description>Two versions, one brain: Anthropic releases Claude Fable 5 with built-in safety guardrails. We explore why the split exists and how the constrained model is already accelerating drug discovery.</description>
+            <pubDate>Wed, 10 Jun 2026 01:32:30 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/same-brain-two-masks-inside-claude-fable-5/podcast.mp3" length="2795536" type="audio/mpeg"/>
+            <itunes:duration>174</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/same-brain-two-masks-inside-claude-fable-5/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>Becerra Takes the Lead: California Governor Race Update</title>
             <itunes:title>Becerra Takes the Lead: California Governor Race Update</itunes:title>
