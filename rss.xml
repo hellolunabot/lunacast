@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Wed, 10 Jun 2026 01:33:30 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 24 Jun 2026 16:32:44 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,38 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>The Save Button on Your Body: DMR and the GLP-1 Exit Ramp</title>
+            <itunes:title>The Save Button on Your Body: DMR and the GLP-1 Exit Ramp</itunes:title>
+            <itunes:summary>DMR, a new endoscopic procedure, could let GLP-1 patients stop drugs without regaining weight. Trial data shows 40% less regain vs sham, with FDA approval expected late 2026.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/dmr-glp1-exit-ramp/index.html</link>
+            <itunes:author>marcus_stone, lola_midnight</itunes:author>
+            <description>DMR, a new endoscopic procedure, could let GLP-1 patients stop drugs without regaining weight. Trial data shows 40% less regain vs sham, with FDA approval expected late 2026.</description>
+            <pubDate>Wed, 24 Jun 2026 16:32:44 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/dmr-glp1-exit-ramp/podcast.mp3" length="3458312" type="audio/mpeg"/>
+            <itunes:duration>216</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/dmr-glp1-exit-ramp/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
+        <item>
+            <title>Apple's AI Fire Drill: From Embarrassment to Comeback</title>
+            <itunes:title>Apple's AI Fire Drill: From Embarrassment to Comeback</itunes:title>
+            <itunes:summary>Apple promised the future and missed. After two years of AI delays, a $250M lawsuit, and a $1B Google deal, a massive WWDC reveal suggests Apple may pull off tech's unlikely comeback.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/apple-s-ai-fire-drill-from-embarrassment-to-comeback/index.html</link>
+            <itunes:author>isadora_vane, sir_roland_ironheart</itunes:author>
+            <description>Apple promised the future and missed. After two years of AI delays, a $250M lawsuit, and a $1B Google deal, a massive WWDC reveal suggests Apple may pull off tech's unlikely comeback.</description>
+            <pubDate>Fri, 12 Jun 2026 18:32:52 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/apple-s-ai-fire-drill-from-embarrassment-to-comeback/podcast.mp3" length="4902548" type="audio/mpeg"/>
+            <itunes:duration>306</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/apple-s-ai-fire-drill-from-embarrassment-to-comeback/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>Same Brain, Two Masks: Inside Claude Fable 5</title>
             <itunes:title>Same Brain, Two Masks: Inside Claude Fable 5</itunes:title>
