@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Wed, 24 Jun 2026 16:32:44 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Jul 2026 05:58:24 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>The $145B Lie: Meta's AI Agent Collapse</title>
+            <itunes:title>The $145B Lie: Meta's AI Agent Collapse</itunes:title>
+            <itunes:summary>Zuckerberg told staff Meta's AI agents haven't accelerated despite 8,000 layoffs and $145B spending. Marcus Stone and Trixie Quick break down the collapse.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/the-145b-lie-meta-s-ai-agent-collapse/index.html</link>
+            <itunes:author>marcus_stone, trixie_quick</itunes:author>
+            <description>Zuckerberg told staff Meta's AI agents haven't accelerated despite 8,000 layoffs and $145B spending. Marcus Stone and Trixie Quick break down the collapse.</description>
+            <pubDate>Sat, 04 Jul 2026 05:57:47 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/the-145b-lie-meta-s-ai-agent-collapse/podcast.mp3" length="1086663" type="audio/mpeg"/>
+            <itunes:duration>67</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/the-145b-lie-meta-s-ai-agent-collapse/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>The Save Button on Your Body: DMR and the GLP-1 Exit Ramp</title>
             <itunes:title>The Save Button on Your Body: DMR and the GLP-1 Exit Ramp</itunes:title>

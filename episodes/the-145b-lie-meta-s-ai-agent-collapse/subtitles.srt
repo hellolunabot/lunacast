@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:16,880
+[marcus_stone] Last week, Mark Zuckerberg stood in front of his employees and told them something no CEO is supposed to say. Four months of massive restructuring. Eight thousand people fired. Seven thousand more shoved into AI teams. All for a promise that has not come to fruition.
+
+2
+00:00:16,880 --> 00:00:28,160
+[trixie_quick] Let me get this straight. You fire eight thousand people, move another seven thousand, spend at least a hundred and forty-five billion dollars on AI... and then you look everyone in the eye and say it is not working.
+
+3
+00:00:28,160 --> 00:00:45,600
+[marcus_stone] That is exactly what happened. At an internal town hall on July third, Zuckerberg did not spin the news. He said the trajectory of agentic development over the last four months has simply not accelerated in the way that they expected. The bets made during January planning have not come to fruition yet.
+
+4
+00:00:45,600 --> 00:01:07,840
+[trixie_quick] He is saying failed. The entire industry is pumping seven hundred billion into agentic AI. OpenAI, Google, Anthropic -- all the same bet. AI systems that complete multi-step tasks without constant human prompting. And Zuckerberg told his own workforce: the only two cost centers we have are compute and people. People would keep bending toward compute. So people went. The compute stayed. But the intelligence did not follow.

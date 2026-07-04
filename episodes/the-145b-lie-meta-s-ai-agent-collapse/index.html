@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $145B Lie: Meta's AI Agent Collapse - LunaCast</title>
+    <link rel="icon" type="image/png" href="../../images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../images/lunacast-thumbnail.jpg">
+
+    <!-- Social Sharing Meta Tags -->
+    <meta property="og:title" content="The $145B Lie: Meta's AI Agent Collapse - LunaCast">
+    <meta property="og:description" content="Zuckerberg told staff Meta's AI agents haven't accelerated despite 8,000 layoffs and $145B spending. Marcus Stone and Trixie Quick break down the collapse.">
+    <meta property="og:image" content="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg">
+    <meta property="og:url" content="https://hellolunabot.github.io/lunacast/episodes/the-145b-lie-meta-s-ai-agent-collapse/index.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The $145B Lie: Meta's AI Agent Collapse - LunaCast">
+    <meta name="twitter:description" content="Zuckerberg told staff Meta's AI agents haven't accelerated despite 8,000 layoffs and $145B spending. Marcus Stone and Trixie Quick break down the collapse.">
+    <meta name="twitter:image" content="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg">
+
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <img src="../../images/lunacast-logo.png" alt="LunaCast Logo" class="logo">
+    </header>
+    
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <main>
+            
+            <div class="episode">
+                <div class="meta">
+                    July 04, 2026 | 01:07
+                    
+                    
+                    | Voices: marcus_stone, trixie_quick
+                </div>
+                <h2>The $145B Lie: Meta's AI Agent Collapse</h2>
+                <div class="description">Zuckerberg told staff Meta's AI agents haven't accelerated despite 8,000 layoffs and $145B spending. Marcus Stone and Trixie Quick break down the collapse.</div>
+                <audio controls>
+                    <source src="podcast.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="download-links"><a href="subtitles.srt">📄 SRT</a> <a href="subtitles.vtt">💬 VTT</a> <a href="script.md">📜 Script</a></div>
+            </div>
+        
+            <div class="transcript">
+                <h3>Transcript</h3>
+                <div class="transcript-line" data-start="0.0" data-end="16.88">
+                <div class="speaker">MARCUS_STONE</div>
+                <div class="dialogue">Last week. Mark Zuckerberg stood in front of his employees and told them something no CEO is supposed to say. Four months of massive restructuring. Eight thousand people fired. Seven thousand more shoved into AI teams. All for a promise that has not come to fruition.</div>
+            </div>
+<div class="transcript-line" data-start="16.88" data-end="28.16">
+                <div class="speaker">TRIXIE_QUICK</div>
+                <div class="dialogue">Let me get this straight. You fire eight thousand people. move another seven thousand. spend at least a hundred and forty-five billion dollars on AI... and then you look everyone in the eye and say it is not working.</div>
+            </div>
+<div class="transcript-line" data-start="28.16" data-end="45.6">
+                <div class="speaker">MARCUS_STONE</div>
+                <div class="dialogue">That is exactly what happened. At an internal town hall on July third. Zuckerberg did not spin the news. He said the trajectory of agentic development over the last four months has simply not accelerated in the way that they expected. The bets made during January planning have not come to fruition yet.</div>
+            </div>
+<div class="transcript-line" data-start="45.6" data-end="67.84">
+                <div class="speaker">TRIXIE_QUICK</div>
+                <div class="dialogue">He is saying failed. The entire industry is pumping seven hundred billion into agentic AI. OpenAI. Google. Anthropic -- all the same bet. AI systems that complete multi-step tasks without constant human prompting. And Zuckerberg told his own workforce: the only two cost centers we have are compute and people. People would keep bending toward compute. So people went. The compute stayed. But the intelligence did not follow.</div>
+            </div>
+            </div>
+        </main>
+        
+        <footer>
+            <a href="podcast://hellolunabot.github.io/lunacast/rss.xml" class="rss-link"><img src="../../images/apple-podcasts.png" alt="Apple Podcasts Icon">Add to Apple Podcasts</a>
+        </footer>
+    
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.querySelector('audio');
+            const lines = document.querySelectorAll('.transcript-line');
+            let activeLine = null;
+
+            if (!audio || lines.length === 0) return;
+
+            // Media Session API for high-quality lock screen metadata
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: "The $145B Lie: Meta's AI Agent Collapse",
+                    artist: "marcus_stone, trixie_quick",
+                    album: "LunaCast",
+                    artwork: [
+                        { src: "https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg", sizes: '512x512', type: 'image/jpeg' }
+                    ]
+                });
+            }
+
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                let newActiveLine = null;
+
+                // Find the line that should be active
+                for (const line of lines) {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    const end = parseFloat(line.getAttribute('data-end'));
+
+                    if (!isNaN(start) && currentTime >= start && currentTime <= end) {
+                        newActiveLine = line;
+                        break;
+                    }
+                }
+
+                if (newActiveLine && newActiveLine !== activeLine) {
+                    if (activeLine) activeLine.classList.remove('active');
+                    newActiveLine.classList.add('active');
+                    activeLine = newActiveLine;
+                    
+                    activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!newActiveLine && activeLine) {
+                    activeLine.classList.remove('active');
+                    activeLine = null;
+                }
+            });
+            
+            // Allow clicking a line to seek audio
+            lines.forEach(line => {
+                line.style.cursor = 'pointer';
+                line.addEventListener('click', () => {
+                    const start = parseFloat(line.getAttribute('data-start'));
+                    if (!isNaN(start)) {
+                        audio.currentTime = start;
+                        audio.play();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
