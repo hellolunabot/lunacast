@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Sat, 04 Jul 2026 18:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Jul 2026 20:34:54 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>The Lost Avalanches of Pluto</title>
+            <itunes:title>The Lost Avalanches of Pluto</itunes:title>
+            <itunes:summary>Scientists confirm six landslides on Pluto using reanalyzed New Horizons data — ice avalanches the size of Manhattan sliding impossibly far, revealing the dwarf planet's hidden, active surface.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/the-lost-avalanches-of-pluto/index.html</link>
+            <itunes:author>alistair_thorne, isadora_vane</itunes:author>
+            <description>Scientists confirm six landslides on Pluto using reanalyzed New Horizons data — ice avalanches the size of Manhattan sliding impossibly far, revealing the dwarf planet's hidden, active surface.</description>
+            <pubDate>Sun, 12 Jul 2026 20:34:20 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/the-lost-avalanches-of-pluto/podcast.mp3" length="4023554" type="audio/mpeg"/>
+            <itunes:duration>251</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/the-lost-avalanches-of-pluto/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>The $145B Lie: Meta's AI Agent Collapse</title>
             <itunes:title>The $145B Lie: Meta's AI Agent Collapse</itunes:title>
@@ -36,7 +52,6 @@
             <itunes:explicit>false</itunes:explicit>
             <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/the-145b-lie-meta-s-ai-agent-collapse/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
         </item>
-
         <item>
             <title>Same Brain, Two Masks: Inside Claude Fable 5</title>
             <itunes:title>Same Brain, Two Masks: Inside Claude Fable 5</itunes:title>
