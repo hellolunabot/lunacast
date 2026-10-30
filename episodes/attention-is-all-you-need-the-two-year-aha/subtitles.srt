@@ -1,0 +1,111 @@
+1
+00:00:00,000 --> 00:00:17,840
+There's a paper every curious traveler has heard of. Attention Is All You Need. Eight pages from 2017 that quietly built the modern world of AI. And there's a writer named Olubusolami Sogunle who quoted it confidently in conversations for almost two years, without understanding a word of it.
+
+2
+00:00:18,240 --> 00:00:27,360
+Two years of nodding along. I know that feeling. Standing in front of a painting everyone claims to love, hoping nobody asks what you actually see.
+
+3
+00:00:27,760 --> 00:00:38,560
+She wrote it herself. Two years, hello. And what cracked it wasn't a smarter brain. It was a method. Three passes. Tell me about the passes.
+
+4
+00:00:38,960 --> 00:00:52,400
+First pass, you skim. Let the shape of the paper wash over you and note the big idea. No details, no math, no shame. Second pass, dig for the key ideas, the why. Third pass, only then, go all in on the technical parts.
+
+5
+00:00:52,800 --> 00:01:00,560
+I've crossed a lot of mountains by refusing to look at the whole range at once. You pick one ridge. Then the next.
+
+6
+00:01:00,960 --> 00:01:14,400
+Exactly. The framework comes from a writer named Madukoma Blessed. Ease into tough papers without burning out. Most of us fail at hard things because we try to read them like easy things. Front to back, in one sitting, with guilt.
+
+7
+00:01:14,800 --> 00:01:18,960
+So what was the big idea hiding on that first pass?
+
+8
+00:01:19,360 --> 00:01:34,960
+This, and it's beautifully simple. What if we stopped using complicated machinery like RNNs and CNNs to translate language, and just used attention instead? That's it. The whole paper. She wrote, hence, attention is all you really need. How did I not get that sooner?
+
+9
+00:01:35,360 --> 00:01:50,080
+The breakthrough was subtraction. Everyone kept adding parts to the machine. The eight authors at Google had the nerve to take parts away. Now, attention. That's the word everyone knows and few can explain. Give it to me plainly.
+
+10
+00:01:50,480 --> 00:02:07,680
+When you read a sentence, your eye doesn't treat every word the same. In the phrase, the cat sat on the mat, you lean on cat and mat. A transformer does the same with numbers. Every word asks, which of you matter to me? That question is the query. The answers are the keys and values.
+
+11
+00:02:08,080 --> 00:02:11,760
+A crowded room where every word whispers to every other word.
+
+12
+00:02:12,160 --> 00:02:31,280
+And not just one conversation. The base model ran eight at once. They call them heads. Each head wears a different pair of glasses, watching for syntax in one, meaning in another. Eight perspectives on the same sentence, combined into something richer. That's multi-head attention, the most beautiful piece of engineering I've seen in a math paper.
+
+13
+00:02:31,680 --> 00:02:32,560
+Is it?
+
+14
+00:02:32,960 --> 00:02:45,360
+Silas, drop one head and quality falls nearly a full BLEU point. Add thirty-two and it degrades too. Eight was the sweet spot. Composition, balance, restraint. A painting, not a billboard.
+
+15
+00:02:45,760 --> 00:02:49,840
+And the old machines, the ones they left behind?
+
+16
+00:02:50,240 --> 00:03:05,040
+Slow. An RNN reads one word at a time, walking the long road on foot. The transformer reads the whole sentence at once, in parallel. It trained in twelve hours on eight GPUs, at a fraction of the cost of the best models of the day.
+
+17
+00:03:05,440 --> 00:03:10,880
+The traveler who runs beats the traveler who walks, and arrives with less food eaten.
+
+18
+00:03:11,280 --> 00:03:25,600
+Twenty-eight point four BLEU on English to German, beating every previous model. Forty-one on English to French. And the authors were honest about what it didn't solve. Generating text is still word by word. The model was text only. They flagged it themselves.
+
+19
+00:03:26,000 --> 00:03:30,480
+I like that. A paper that knows the edges of its own map.
+
+20
+00:03:30,880 --> 00:03:49,360
+And look where the map went. That 2017 translation paper, named after a Beatles song, called Transformer because Jakob Uszkoreit liked how the word sounded, is cited more than two hundred fifty thousand times. Top ten most cited paper of the century. Every large language model you've talked to is built on it.
+
+21
+00:03:49,760 --> 00:03:53,120
+From a title pun to the backbone of an era.
+
+22
+00:03:53,520 --> 00:04:01,840
+From one writer's two-year nod to a genuine aha. Which is the part I keep coming back to. The paper didn't change. Her method changed.
+
+23
+00:04:02,240 --> 00:04:16,480
+So here's my advice to every listener staring down a paper they've been avoiding. Skim the shape. Then the ideas. Then, on the third pass, the details. Give a hard thing three visits and it will tell you its secret.
+
+24
+00:04:16,880 --> 00:04:24,960
+And if you learn the meaning of SOTA along the way, she says she felt like a cool kid, time to throw it around in conversations. Please don't.
+
+25
+00:04:25,360 --> 00:04:28,960
+Too late. I've been using it for two years.
+
+26
+00:04:29,360 --> 00:04:33,440
+We listen, we don't judge. That's her line, and it's ours.
+
+27
+00:04:33,840 --> 00:04:41,040
+Thanks for walking this road with us. Go read something hard. Slowly. On purpose.
+
+28
+00:04:41,440 --> 00:04:44,160
+And pay attention. It's all you need.

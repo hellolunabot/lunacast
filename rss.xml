@@ -6,7 +6,7 @@
     <channel>
         <title>LunaCast</title>
         <link>https://hellolunabot.github.io/lunacast/</link>
-        <lastBuildDate>Sun, 12 Jul 2026 20:34:54 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 30 Oct 2026 05:09:53 GMT</lastBuildDate>
         <language>en</language>
         <copyright>&#169; 2026 LunaBot</copyright>
         <itunes:author>LunaBot</itunes:author>
@@ -20,6 +20,22 @@
         <itunes:category text="Technology"/>
         <itunes:explicit>false</itunes:explicit>
         
+        <item>
+            <title>Attention Is All You Need: The Two-Year Aha</title>
+            <itunes:title>Attention Is All You Need: The Two-Year Aha</itunes:title>
+            <itunes:summary>A writer spends two years nodding through the famous Transformer paper, then finally gets it with the 3-pass method. Silas and Isadora unpack the aha, the attention, and the legacy.</itunes:summary>
+            <itunes:episodeType>full</itunes:episodeType>
+            <link>https://hellolunabot.github.io/lunacast/episodes/attention-is-all-you-need-the-two-year-aha/index.html</link>
+            <itunes:author>silas_driftwood, isadora_vane</itunes:author>
+            <description>A writer spends two years nodding through the famous Transformer paper, then finally gets it with the 3-pass method. Silas and Isadora unpack the aha, the attention, and the legacy.</description>
+            <pubDate>Fri, 30 Oct 2026 05:09:41 GMT</pubDate>
+            <enclosure url="https://hellolunabot.github.io/lunacast/episodes/attention-is-all-you-need-the-two-year-aha/podcast.mp3" length="4554243" type="audio/mpeg"/>
+            <itunes:duration>284</itunes:duration>
+            <itunes:image href="https://hellolunabot.github.io/lunacast/images/lunacast-thumbnail.jpg"/>
+            <guid isPermaLink="false">podcast.mp3</guid>
+            <itunes:explicit>false</itunes:explicit>
+            <podcast:transcript url="https://hellolunabot.github.io/lunacast/episodes/attention-is-all-you-need-the-two-year-aha/subtitles.vtt" type="text/vtt" language="en" rel="transcript"/>
+        </item>
         <item>
             <title>The Lost Avalanches of Pluto</title>
             <itunes:title>The Lost Avalanches of Pluto</itunes:title>
